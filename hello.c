@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main() {
-    priny("Hello, world!\n");
+    print("Hello, world!\n");
     return 0;
 }
