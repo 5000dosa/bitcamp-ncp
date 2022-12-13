@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>생성자5 - 생성자 상속</h1>
+<script>
+"use strict"
+
+function Engine(v, c, cc) {
+  // 상위 생성자를 호출하지 않으며
+  // 기본으로 Object() 생성자를 호출한다.
+  // object.call(this);
+
+  this.capctiy = ca; // 수용인원
+  this.auto =au; // 오토미션
+}
+
+var el = new Engine(16., 4, 2000);
+console.log(el);
+
+function Car(v, c, cc, ca, au, ) {
+  // 상위 생성자를 명시적으로 호출한다.
+  Engine.call(this, va, cy, cc);
+
+  this.kor = k;
+  this.eng = e;
+  this.math = m;
+}
+
+var obj1 = new Car(16, 4, 2000, 5, true);
+console.log(obj1);
+
+</script>
+</body>
+</html>

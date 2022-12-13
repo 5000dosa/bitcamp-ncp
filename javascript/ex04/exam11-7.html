@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>생성자6 - 생성자 상속과 prototype 연결</h1>
+<script>
+"use strict"
+
+// 생성자 정의
+function Engine(va, cu, cc) {
+  // object.call(this);
+  
+  this.valve = va; // 밸브
+  this.cylinder = cu; // 실린더
+  this.cc = cc; //cc
+  this.info = function(){
+    console.log("비트캠프 엔진")
+  }
+}
+e1.info();
+
+e1.print();
+
+// Engine 객체 생성
+let e1 = new Engine(16, 4, 2000);
+
+// Engine.prototype에 프로퍼티 추가
+Engine.prototype.print = function(){
+  console.log("Engine.prototype.print()")
+  console.log("밸브:" + this.valve);
+  console.log("실린더:" + this.cylinder);
+  console.log("cc:" + this.cc);
+}
+
+// 1) Object() 생성자와 prototpe에 프로피터 추가
+Object.prototype.test = function() {
+  console.log("Object.test() 호출됨!");
+};
+
+
+e1.print();
+// e1.print() 
+// --> Engine.prototype.print()
+
+console.log(e1.toString());
+// e1.toString()
+//--> Engine.prototype.toString()
+//     --> Object.prototype.toString()
+
+e1.test(); // OK
+// e1.toString()
+//--> Engine.prototype.toString()
+//     --> Object.prototype.toString()
+
+console.log(e1);
+
+
+
+</script>
+</body>
+</html>
