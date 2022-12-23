@@ -12,7 +12,6 @@
 	      <span class="name">이름1</span>: <input type="text" name="name1"><br>
 	    </div>
     </div>
-
     <button id="btnAddName" type="button">추가</button><br>
     <button id="btn1">확인</button>
   </form>
@@ -27,7 +26,7 @@ var inputNameDiv = document.querySelector(".inputName");
 btnAddName.onclick = function() {
 	inputNameIndex++;
 	var e = inputNameDiv.cloneNode(true);
-  e.querySelector(".name").innerHTML = "이름" + inputNameIndex;
+	e.querySelector(".name").innerHTML = "이름" + inputNameIndex;
 	e.querySelector("input").name = "name" + inputNameIndex;
   e.querySelector("input").value = "";
 	inputNameContainer.appendChild(e);

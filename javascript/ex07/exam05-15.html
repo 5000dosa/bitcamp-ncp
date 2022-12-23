@@ -18,21 +18,7 @@
 <button type="reset">취소</button>
 </form>
 
-
 <script src="jquery-15.js"></script>
-
-<script>
-    let obj = {
-        email:"hong@test.com",
-        password:"1111"
-    };
-
-    // for (let key of Object) {
-    //     console.log(key, Object[key]);
-    // };
-
-</script>
-
 <script>
 "use strict"
 
@@ -41,8 +27,8 @@ var tbody = $("tbody");
 $("#login-form").submit((e) => {
     $.ajax({
         url: "http://localhost:3000/login",
-        method:"post",
-        dataType:"text",
+        method: "POST",
+        dataType: "text",
         data: {
             email: $("#login-form > input[name='email']").val(),
             password: $("#login-form > input[name='password']").val()
@@ -51,12 +37,11 @@ $("#login-form").submit((e) => {
             console.log(result);
         }
     });
-    
+
     // 따로 AJAX 요청을 할 것이기 때문에,
     // 웹브라우저가 서버에 요청하는 것은 막는다.
     e.preventDefault();
 });
-
 </script>
 </body>
 </html>

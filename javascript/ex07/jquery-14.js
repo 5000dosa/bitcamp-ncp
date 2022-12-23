@@ -1,17 +1,17 @@
-// 1. 태그 찾기
-// 2. 태그 만들기
-// 3. append() 
-// 4. 리팩토링
-// 5. html()
-// 6. on()
-// 7. appendTo()
-// 8. Method Chaining
-// 9. click()
-// 10. 리팩토링
-// 11. ajax()
-// 12. ajax 코드정리
-// 13. getjson
-// 14. val()
+//1. 태그 찾기
+//2. 태그 만들기
+//3. append() 
+//4. 리팩토링
+//5. html()
+//6. on()
+//7. appendTo()
+//8. Method Chaining
+//9. click()
+//10. 리팩토링
+//11. ajax()
+//12. ajax() 코드 정리
+//13. getJSON()
+//14. val(), html()
 function jQuery(selector) {
   return new ElementBox(selector);
 }
@@ -36,18 +36,16 @@ ElementBox.prototype.append = function(childBox) {
       parent.appendChild(child.cloneNode(true));
     }
   }
-
   for (let child of childBox.el) {
     if (child.parentElement != null || child.parentElement != undefined) {
       child.parentElement.removeChild(child);
     }
   }
-
   return this;
 };
 
-ElementBox.prototype.appendTo = function(parentsBox) {
-  for (let parentTag of parentsBox.el) {
+ElementBox.prototype.appendTo = function(parentBox) {
+  for (let parentTag of parentBox.el) {
     for (let child of this.el) {
       parentTag.appendChild(child.cloneNode(true));
     }
@@ -61,9 +59,9 @@ ElementBox.prototype.appendTo = function(parentsBox) {
 };
 
 ElementBox.prototype.html = function(content) {
-    if (this.el.length == 0) {
-      return;
-    } 
+  if (this.el.length == 0) {
+    return;
+  }
 
   if (arguments.length > 0) {
     // 파라미터 값이 있으면 setter로 동작한다.
@@ -71,8 +69,9 @@ ElementBox.prototype.html = function(content) {
       e.innerHTML = content;
     }
     return this;
+
   } else {
-    //파라미터 값이 없으면 getter로 동작한다
+    // 파라미터 값이 없으면 getter로 동작한다.
     return this.el[0].innerHTML;
   }
 };
@@ -85,7 +84,7 @@ ElementBox.prototype.on = function(eventName, listener) {
 };
 
 ElementBox.prototype.click = function(handler) {
-  this.on('click', handler);
+  return this.on('click', handler);
 };
 
 // jQuery 함수는 값을 꺼내는 함수(getter) 따로 넣는 함수(setter) 따로 있지 않다.
@@ -98,14 +97,14 @@ ElementBox.prototype.val = function(value) {
   }
 
   if (arguments.length > 0) {
-    //값을 설정할 때는 모든 태그에 대해 수행한다.
+    // 값을 설정할 때는 모든 태그에 대해 수행한다.
     for (let e of this.el) {
       e.value = value;
     }
     return this;
 
   } else {
-    // 값을 꺼낼때는 맨 처음 태그에 대해 수행한다.
+    // 값을 꺼낼 때는 맨 처음 태그 값만 꺼낸다.
     return this.el[0].value;
   }
 };
@@ -123,8 +122,8 @@ jQuery.ajax = function(settings) {
         }
         let result;
         if (settings.dataType == "json") {
-          // json string ---> javascript object (deseriallze)
-          result = JSON.parse(xhr.responseText)
+          // json string ---> javascript object (deserialize)
+          result = JSON.parse(xhr.responseText);
         } else {
           result = xhr.responseText;
         }
@@ -140,7 +139,6 @@ jQuery.ajax = function(settings) {
   };
   xhr.open(settings.method, settings.url, settings.async);
   xhr.send();
-
 };
 
 jQuery.getJSON = function(url, success) {

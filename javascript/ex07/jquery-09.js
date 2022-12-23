@@ -37,7 +37,7 @@ function jQuery(selector) {
       }
     }
 
-    return this;
+    return el;
   };
 
   el.appendTo = function(parents) {
@@ -72,16 +72,11 @@ function jQuery(selector) {
     for (let e of el) {
       e.addEventListener(eventName, listener);
     }
-
     return this;
   };
 
   el.click = function(handler) {
-
     this.on('click', handler);
-    // for (let e of el) {
-    //   e.addEventListener('click', handler);
-    // }
     return this;
   };
 

@@ -36,7 +36,7 @@ function jQuery(selector) {
       }
     }
 
-    return this;
+    return el;
   };
 
   el.appendTo = function(parents) {

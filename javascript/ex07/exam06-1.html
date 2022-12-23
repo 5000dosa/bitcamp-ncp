@@ -3,34 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>ex07</title>
+<style>
+.btn {
+    border: 1px solid gray;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: blue;
+    color: white;
+    box-shadow: 1px 1px 2px 0px gray;
+}
+
+.btn:active {
+    background-color: rgb(0, 0, 214);    
+    box-shadow: 0px 0px 0px 0px gray;
+}
+
+.btn:hover {
+    cursor: default;
+}
+</style>
 </head>
 <body>
-<h1>AJAX - 공공데이터오픈API 호출</h1>
-날짜: <input id="base_date" name="base_date"><br>
-x좌표: <input id="nx" name="nx"><br>
-y좌표: <input id="ny" name="ny"><br>
-<button id="btn1">요청</button><br>
-<textarea id="ta" cols="80" rows="10"></textarea>
+<h1>UI 컴포넌트를 다루는 방법 - 버튼 UI</h1>
 
-<script>
-"use strict"
+<div class="btn">버튼</div>
 
-var baseDate = document.querySelector("#base_date");
-var nx = document.querySelector("#nx");
-var ny = document.querySelector("#ny");
-var ta = document.querySelector("#ta");
-
-document.querySelector("#btn1").onclick = () => {
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-        "GET", 
-        "http://localhost:3000/proxy2?base_date=" + base_date.value + "&nx=" + nx.value + "&ny=" + ny.value, 
-        false);
-    xhr.send();
-    ta.value = xhr.responseText;
-};
-
-</script>
 </body>
 </html>
 

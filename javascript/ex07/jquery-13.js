@@ -1,16 +1,16 @@
-// 1. 태그 찾기
-// 2. 태그 만들기
-// 3. append() 
-// 4. 리팩토링
-// 5. html()
-// 6. on()
-// 7. appendTo()
-// 8. Method Chaining
-// 9. click()
-// 10. 리팩토링
-// 11. ajax()
-// 12. ajax 코드정리
-// 13. getjson
+//1. 태그 찾기
+//2. 태그 만들기
+//3. append() 
+//4. 리팩토링
+//5. html()
+//6. on()
+//7. appendTo()
+//8. Method Chaining
+//9. click()
+//10. 리팩토링
+//11. ajax()
+//12. ajax() 코드 정리
+//13. getJSON()
 function jQuery(selector) {
   return new ElementBox(selector);
 }
@@ -35,18 +35,16 @@ ElementBox.prototype.append = function(childBox) {
       parent.appendChild(child.cloneNode(true));
     }
   }
-
   for (let child of childBox.el) {
     if (child.parentElement != null || child.parentElement != undefined) {
       child.parentElement.removeChild(child);
     }
   }
-
   return this;
 };
 
-ElementBox.prototype.appendTo = function(parentsBox) {
-  for (let parentTag of parentsBox.el) {
+ElementBox.prototype.appendTo = function(parentBox) {
+  for (let parentTag of parentBox.el) {
     for (let child of this.el) {
       parentTag.appendChild(child.cloneNode(true));
     }
@@ -56,7 +54,6 @@ ElementBox.prototype.appendTo = function(parentsBox) {
       child.parentElement.removeChild(child);
     }
   }
-
   return this;
 };
 
@@ -75,7 +72,7 @@ ElementBox.prototype.on = function(eventName, listener) {
 };
 
 ElementBox.prototype.click = function(handler) {
-  this.on('click', handler);
+  return this.on('click', handler);
 };
 
 
@@ -92,8 +89,8 @@ jQuery.ajax = function(settings) {
         }
         let result;
         if (settings.dataType == "json") {
-          // json string ---> javascript object (deseriallze)
-          result = JSON.parse(xhr.responseText)
+          // json string ---> javascript object (deserialize)
+          result = JSON.parse(xhr.responseText);
         } else {
           result = xhr.responseText;
         }
@@ -109,7 +106,6 @@ jQuery.ajax = function(settings) {
   };
   xhr.open(settings.method, settings.url, settings.async);
   xhr.send();
-
 };
 
 jQuery.getJSON = function(url, success) {
