@@ -18,14 +18,14 @@ public class Exam0112 {
   static void printStars(int len) {
     int starCnt = 1;
     while (starCnt <= len) {
-      System.out.print("*");
+      System.out.print("");
       starCnt++;
     }
   }
 
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
-    System.out.print("밑변의 길이? ");
+    System.out.print("??? ");
     int len = keyScan.nextInt();
     keyScan.close();
 
