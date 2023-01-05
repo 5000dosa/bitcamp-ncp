@@ -14,6 +14,9 @@ public class Exam0210 {
 
     // 메서드를 호출하여 작업을 수행하고,
     // 리턴 결과는 로컬 변수에 저장한다.
+    // result = Exam0210.plus(2, 3); 클래스에 포함되어야 있어야 하지만
+    // 자동으로 컴파일이 된다. 스태틱메서드는 반드시 스태틱을 주어야하고
+    // 인스턴스 메서드는 반드시 인스턴스 주소를 주어야 한다.
     result = plus(2, 3);
     result = minus(result, 1);
     result = multiple(result, 7);

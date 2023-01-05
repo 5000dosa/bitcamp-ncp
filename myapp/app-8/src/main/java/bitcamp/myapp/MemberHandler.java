@@ -38,13 +38,12 @@ public class MemberHandler {
         default: levelTitle = "전공자";
       }
       System.out.printf("%d\t%s\t%s\t%s\t%s\n",
-          m.no, m.name, m.tel,
+          m.no, m.name,m.tel,
           m.working ? "예" : "아니오",
               levelTitle);
     }
   }
-
-  static void service() {
+  static void sevice() {
     while (true) {
       System.out.println("[회원 관리]");
       System.out.println("1.등록");
@@ -58,9 +57,9 @@ public class MemberHandler {
       if (menuNo == 0) {
         break;
       } else if (menuNo == 1) {
-        inputMember();
+        MemberHandler.inputMember();
       } else if (menuNo == 2) {
-        printMembers();
+        MemberHandler.printMembers();
       } else if (menuNo >= 3 && menuNo <=5) {
         System.out.println("작업실행!");
       } else {
@@ -68,6 +67,4 @@ public class MemberHandler {
       }
     }
   }
-
-
 }

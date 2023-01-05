@@ -15,7 +15,7 @@ public class Exam0250 {
     // - 인스턴스 변수는 클래스가 로딩 될 때 만들어지지 않는다.
     // - new 명령을 사용해서 만들어야 한다.
     // - 변수 선언 앞에 static이 붙지 않는다.
-    int result = 0;
+    int result = 0; // <-- 인스턴스 변수라고 한다.
 
     static void plus(Calculator obj, int value) {
       // 인스턴스 변수를 다루는 메서드는 작업을 수행할 때 그 인스턴스 주소를 받아야 한다.
