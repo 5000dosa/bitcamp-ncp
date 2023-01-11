@@ -7,15 +7,18 @@
   <title>Document</title>
 </head>
 <body>
-<h1>게시글</h1>
-<a href="/app/board/form.html">새 글</a>
+<h1>회원 목록</h1>
+<a href="/frontend-app/app/userlist/form.html">회 원</a>
 <table border="1">
   <thead>
     <tr>
       <th>번호</th>
       <th>제목</th>
-      <th>작성일</th>
-      <th>조회수</th>
+      <th>이름</th>
+      <th>성별</th>
+      <th>번호</th>
+      <th>주소</th>
+      <th>가입일</th>
     </tr>
   </thead>
   <tbody>
@@ -25,16 +28,19 @@
 <script>
 var tbody = document.querySelector("tbody");
 
-fetch('http://localhost:8080/boards')
+fetch('http://localhost:8080/users')
   .then((response) => {return response.json();})
   .then((obj) => {
     var html = '';
-    for (var b of obj.data) {
+    for (var u of obj.data) {
       html += `<tr>
-        <td>${b.no}</td>
-        <td><a href="view.html?no=${b.no}">${b.title} </a></td>
-        <td>${b.createdDate}</td>
-        <td>${b.viewCount}</td>
+        <td>${u.no}</td>
+        <td><a href="view.html?no=${u.no}">${u.title} </a></td>
+        <td>${u.name}</td>
+        <td>${u.gender}</td>
+        <td>${u.tel}</td>
+        <td>${u.basicaddress}</td>
+        <td>${u.createdDate}</td>
         </tr>\n`;
     }
     tbody.innerHTML = html;
