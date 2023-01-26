@@ -9,6 +9,7 @@ class C {
 
   public C() {
     v1 = 100;
+    // v1 = 101; final 필드는 초기화를 두번 할 수 없다.
   }
 
   public void m1() {

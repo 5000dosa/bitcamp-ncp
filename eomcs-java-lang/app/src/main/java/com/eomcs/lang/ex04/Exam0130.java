@@ -4,7 +4,7 @@ package com.eomcs.lang.ex04;
 //- 변수가 가리키는 메모리에 값을 저장하는 것
 //- 문법
 //    변수명 = 변수 또는 리터럴;
-//- 용어 
+//- 용어
 //    = : 할당 연산자(assignment operator)
 //    l-value : = 왼쪽에 있는 변수를 가리킨다. l-value는 리터럴이 될 수 없다.
 //    r-value : = 오른쪽에 있는 변수나 리터럴을 가리킨다.
@@ -15,11 +15,11 @@ package com.eomcs.lang.ex04;
 public class Exam0130 {
   public static void main(String[] args) {
 
-    int age;
+    int age; // int 값을 담은 메모리를 준비하고 그 메모리에 이름을 age라고 하자
 
     //- 문법
     //    변수명 = 값;
-    age = 20; 
+    age = 20; // 20에 지정된 값을 왼쪽 age(변수)가 가리키는 메모리에 저장.
 
     //표현
     //- age 변수가 가리키는 메모리에 20을 저장하라!

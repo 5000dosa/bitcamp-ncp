@@ -1,4 +1,4 @@
-// Object 클래스 - equals() 오버라이딩 
+// Object 클래스 - equals() 오버라이딩
 package com.eomcs.basic.ex01;
 
 import java.util.Objects;
@@ -7,18 +7,18 @@ public class Exam0131 {
 
   public static void main(String[] args) {
     My obj1 = new My();
-    obj1.name = "홍길동";
+    obj1.name = Messages.getString("Exam0131.0"); //$NON-NLS-1$
     obj1.age = 20;
-    obj1.tel = "1111-1111";
-    obj1.email = "hong@test.com";
+    obj1.tel = Messages.getString("Exam0131.1"); //$NON-NLS-1$
+    obj1.email = Messages.getString("Exam0131.2"); //$NON-NLS-1$
     obj1.gender = 1;
     obj1.working = false;
 
     My obj2 = new My();
-    obj2.name = "홍길동";
+    obj2.name = Messages.getString("Exam0131.3"); //$NON-NLS-1$
     obj2.age = 20;
-    obj2.tel = "1111-1111";
-    obj2.email = "hong@test.com";
+    obj2.tel = Messages.getString("Exam0131.4"); //$NON-NLS-1$
+    obj2.email = Messages.getString("Exam0131.5"); //$NON-NLS-1$
     obj2.gender = 1;
     obj2.working = false;
 
@@ -39,7 +39,10 @@ public class Exam0131 {
     String email;
     int gender;
     boolean working;
-
+    @Override
+    public int hashCode() {
+      return Objects.hash(age, email, gender, name, tel, working);
+    }
     @Override
     public boolean equals(Object obj) {
       if (this == obj)
@@ -53,6 +56,8 @@ public class Exam0131 {
           && Objects.equals(name, other.name) && Objects.equals(tel, other.tel)
           && working == other.working;
     }
+
+
 
   }
 

@@ -10,7 +10,7 @@ public class star {
     odds[2] = 5;
     odds[3] = 7;
     odds[4] = 9;
-    odds[5] = 11;
+    //    odds[5] = 11;
   }
 }
-}
+
