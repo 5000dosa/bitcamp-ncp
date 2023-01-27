@@ -18,14 +18,29 @@ public class Exam0121 {
     // 익명 클래스로 인터페이스 구현하기
     // 문법:
     // => 수퍼클래스 레퍼런스 = new 수퍼클래스() {};
-    //    - 호출하는 생성자는 수퍼 클래스의 생성자이다.
+    //    - 파라미터가 없으면 익명 클래스의 기본 생성자를 호출한다.
+    //    - 파라미터가 있으면 수퍼 클래스의 생성자를 찾아 호출한다.
     //
     A obj2 = new A() {
       @Override
       void print() {
         System.out.println("Hello!");
       }
+
+      void m() {
+        System.out.println("이 메서드를 어떻게 호출할ㄲ?");
+      }
     };
     obj2.print();
+    //obj2.m(); // obj2는 A 타입이다. A에는 m() 이 정듸되어 있지 않다. 컴파일 오류!
+
+    //    try {
+    //      Class classInfo = obj2.getClass();
+    //      Method m = classInfo.getMethod("m");
+    //      m.invoke(obj2);
+    //    } catch (Exception e) {
+    //      System.out.println("클래스 정보를 이용하여 메서드 호출하다 아작남!");
+    //      e.printStackTrace();
+    //    }
   }
 }

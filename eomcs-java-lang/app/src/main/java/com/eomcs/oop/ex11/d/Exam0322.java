@@ -2,7 +2,7 @@
 package com.eomcs.oop.ex11.d;
 
 class D22 {
-  int v1 = 1;
+  //  int v1 = 1;
 
   void m1() {
     //    int v1 = 10;
