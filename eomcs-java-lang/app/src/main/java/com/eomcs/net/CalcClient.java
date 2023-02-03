@@ -1,61 +1,53 @@
 package com.eomcs.net;
 
-import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class CalcClient {
   public static void main(String[] args) throws Exception {
-    try (
-        Scanner keyScan = new Scanner(System.in);
+    Scanner keyScan = new Scanner(System.in);
+    System.out.println("클라이언트 실행중...");
 
-        System.out.println("클라이언트 실행중...");
+    Socket socket = new Socket("127.0.0.1", 8888);
 
-        Socket socket = new Socket("127.0.0.1", 8888);
-        System.out.println("서버에 연결되었음!");
+    System.out.println("서버에 연결되었음!");
 
-        PrintStream out = new PrintStream(socket.getOutputStream());
-        Scanner in = new Scanner(socket.getInputStream())); {
-          receiveResponse(in); // 서버의 인사말을 받기
+    PrintStream out = new PrintStream(socket.getOutputStream());
+    Scanner in = new Scanner(socket.getInputStream());
 
-          while (true) {
-            String input = prompt(keyboardScanner);
-            if (input == null) {
-              continue;
+    while (true) {
+      System.out.printf("계산을 하시겠습니까? (y/n) ->");
+      char check = keyScan.next().charAt(0);
+      if (check == 'y') {
 
-              sendRequest(out, input); // 서버에 요청을 보내기
-              receiveResponse(in); // 서버의 실행 결과를 받기
-            } catch (Exception e) {
-              e.printStackTrace();
-            }
-          }
+        System.out.print("값> ");
+        int message = keyScan.nextInt();
+        out.println(message);
+        System.out.print("연산자>");
+        char message2 = keyScan.next().charAt(0);
+        out.println(message2);
+        //      if (message2 == 'n') {
+        //        break;
+        //      }
+        System.out.print("값>");
+        int message3 = keyScan.nextInt();
+        out.println(message3);
+        int response = in.nextInt();
+        System.out.printf("답: %d\n", response);
 
+      }else if(check == 'n') {
 
-          static String prompt(Scanner keyboardScanner) {
-            System.out.print("계산식> ");
-            String input = keyboardScanner.nextLine();
+        System.out.println("계산기를 종료합니다.");
+        break;
 
-            if (input.split(" ").length != 3) { // 사용자가 입력한 값을 검증
-              System.out.println("입력 형식이 올바르지 않습니다. 예) 23 + 5");
-              return null;
-            }
-            return input;
-          }
+      }
+    }
+    out.close();
+    in.close();
+    socket.close();
 
-          static void sendRequest(PrintStream out, String message) throws Exception {
-            out.println(message);
-            out.flush();
-          }
-
-          static void receiveResponse(BufferedReader in) throws Exception {
-            while (true) {
-              String input = in.readLine();
-              if (input.length() == 0) {
-                // 빈 줄을 읽었다면 읽기를 끝낸다.
-                break;
-              }
-              System.out.println(input);
-            }
-          }
-        }
+    System.out.println("클라이언트 종료!");
+    keyScan.close();
+  }
+}
