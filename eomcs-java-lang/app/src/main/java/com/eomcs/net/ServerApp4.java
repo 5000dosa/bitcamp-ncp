@@ -6,40 +6,42 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class ServerApp4 {
-
   public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
-    System.out.println("서버 실행중....");
+    System.out.println("서버실행");
 
-    ServerSocket serverSocket = new ServerSocket (8888);
+    ServerSocket serverSocket = new ServerSocket(8888);
+
     Socket socket = serverSocket.accept();
-
     System.out.println("클라이언트와 연결됨!");
 
-    Scanner in = new Scanner(socket.getInputStream());
     PrintStream out = new PrintStream(socket.getOutputStream());
+    Scanner in =  new Scanner(socket.getInputStream());
 
     while (true) {
-      // 클라이언트가 보낸 문자열을 한 줄 읽을 때까지 리턴하지 않는다.
-      String message = in.nextLine();
+      int message = in.nextInt();
       System.out.println(message);
-      if (message.equals("quit")) {
-        break;
+      char message2 = in.next().charAt(0);
+      System.out.println(message2);
+      int message3 = in.nextInt();
+      System.out.println(message3);
+
+      int result = 0;
+
+      switch(message2) {
+        case '+' : result = message + message3; break;
+        case '-' : result = message - message3; break;
+        case '*' : result = message * message3; break;
+        case '/' : result = message / message3; break;
       }
-
-
-
-      System.out.print("입력> ");
-      String str = keyScan.nextLine();
-      out.println(str);
+      out.println(message2); {
+        socket.close();
+        System.out.println("서버종료!");
+      }
+      keyScan.close();
+      serverSocket.close();
     }
 
-    out.println("반가워요!");
-
-    socket.close();
-    serverSocket.close();
-
-    System.out.println("서버 종료!");
-    keyScan.close();
   }
 }
+

@@ -1,6 +1,7 @@
 package bitcamp.myapp.dao;
 
 import com.google.gson.Gson;
+import bitcamp.myapp.Dao.DaoStub;
 import bitcamp.myapp.vo.Board;
 
 public class NetworkBoardDao implements BoardDao {

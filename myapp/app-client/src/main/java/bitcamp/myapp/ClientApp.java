@@ -1,6 +1,6 @@
 package bitcamp.myapp;
 
-import bitcamp.myapp.dao.DaoStub;
+import bitcamp.myapp.Dao.DaoStub;
 import bitcamp.myapp.dao.NetworkBoardDao;
 import bitcamp.myapp.dao.NetworkStudentDao;
 import bitcamp.myapp.dao.NetworkTeacherDao;

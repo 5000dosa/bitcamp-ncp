@@ -1,4 +1,4 @@
-package bitcamp.myapp.dao;
+package bitcamp.myapp.Dao;
 
 public class DaoException extends RuntimeException {
   private static final long serialVersionUID = 1L;
