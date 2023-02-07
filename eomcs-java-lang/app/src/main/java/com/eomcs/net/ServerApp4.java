@@ -13,10 +13,10 @@ public class ServerApp4 {
     ServerSocket serverSocket = new ServerSocket(8888);
 
     Socket socket = serverSocket.accept();
-    System.out.println("클라이언트와 연결됨!");
+    System.out.println("클라이언트와 연결됨");
 
     PrintStream out = new PrintStream(socket.getOutputStream());
-    Scanner in =  new Scanner(socket.getInputStream());
+    Scanner in = new Scanner(socket.getInputStream());
 
     while (true) {
       int message = in.nextInt();
@@ -29,17 +29,18 @@ public class ServerApp4 {
       int result = 0;
 
       switch(message2) {
-        case '+' : result = message + message3; break;
-        case '-' : result = message - message3; break;
-        case '*' : result = message * message3; break;
-        case '/' : result = message / message3; break;
+        case '+': result = message + message3; break;
+        case '-': result = message - message3; break;
+        case '*': result = message * message3; break;
+        case '/': result = message / message3; break;
       }
-      out.println(message2); {
+      out.println(result);
+      if(message2 == 'n') {
         socket.close();
-        System.out.println("서버종료!");
+        System.out.println("서버종료");
       }
-      keyScan.close();
       serverSocket.close();
+      keyScan.close();
     }
 
   }
