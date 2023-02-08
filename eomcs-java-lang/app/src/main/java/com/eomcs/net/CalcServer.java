@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class CalcServer {
 
-  public static void main(String[] args) throws Exception{
+  public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
     System.out.println("서버실행");
 
@@ -29,24 +29,18 @@ public class CalcServer {
       System.out.println(message3);
 
       int result = 0;
-      //      if (message2 == '+') {
-      //        result = message + message3;
-      //      } else if(message2 == '-') {
-      //        result = message - message3;
-      //      } else if(message2 == '*') {
-      //        result = message * message3;
-      //      } else if(message == '/') {
-      //        result = message / message3;
-      //      }
-      switch(message2) {
-        case '+' : result = message + message3; break;
-        case '-' : result = message - message3; break;
-        case '*' : result = message * message3; break;
-        case '/' : result = message / message3; break;
+      if (message2 == '+') {
+        result = message + message3;
+      } else if (message2 == '-') {
+        result = message - message3;
+      } else if (message2 == '*') {
+        result = message * message3;
+      } else if (message2 == '/') {
+        result = message / message3;
       }
 
       out.println(result);
-      if(message2 == 'n') {
+      if (message2 == 'n') {
         socket.close();
         System.out.println("서버종료!");
       }
@@ -54,4 +48,5 @@ public class CalcServer {
       keyScan.close();
     }
   }
+
 }

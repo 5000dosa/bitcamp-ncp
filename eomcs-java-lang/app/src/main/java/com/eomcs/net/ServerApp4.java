@@ -13,7 +13,8 @@ public class ServerApp4 {
     ServerSocket serverSocket = new ServerSocket(8888);
 
     Socket socket = serverSocket.accept();
-    System.out.println("클라이언트와 연결됨");
+    System.out.println("클라이언트와연결");
+
 
     PrintStream out = new PrintStream(socket.getOutputStream());
     Scanner in = new Scanner(socket.getInputStream());
@@ -29,20 +30,19 @@ public class ServerApp4 {
       int result = 0;
 
       switch(message2) {
-        case '+': result = message + message3; break;
-        case '-': result = message - message3; break;
-        case '*': result = message * message3; break;
-        case '/': result = message / message3; break;
+        case '+' : result = message + message3; break;
+        case '-' : result = message - message3; break;
+        case '/' : result = message / message3; break;
+        case '*' : result = message * message3; break;
       }
       out.println(result);
-      if(message2 == 'n') {
+      if (message2 == 'n') {
         socket.close();
-        System.out.println("서버종료");
+        System.out.println("서버종료!");
       }
       serverSocket.close();
       keyScan.close();
     }
-
   }
 }
 
