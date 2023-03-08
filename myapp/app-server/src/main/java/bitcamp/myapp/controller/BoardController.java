@@ -1,18 +1,23 @@
 package bitcamp.myapp.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import bitcamp.myapp.service.BoardService;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.BoardFile;
@@ -22,148 +27,131 @@ import bitcamp.myapp.vo.Member;
 @RequestMapping("/board")
 public class BoardController {
 
-  // ServletContext는 요청 핸들러의 파라미터로 주입 받을 수 없다.
+  Logger log = LogManager.getLogger(getClass());
+
+  {
+    log.trace("BoardController 생성됨!");
+  }
+
+  // ServletContext 는 요청 핸들러의 파라미터로 주입 받을 수 없다.
   // 객체의 필드로만 주입 받을 수 있다.
-  @Autowired private ServletContext servletcontext;
+  @Autowired private ServletContext servletContext;
   @Autowired private BoardService boardService;
 
   @GetMapping("form")
-  public String form() {
-    return "/board/form.jsp";
+  public void form() {
   }
 
   @PostMapping("insert")
+  @ResponseBody
   public String insert(
       Board board,
-      Part[] files,
-      Model model, // ServletRequest 보관소에 저장할 값을 담는 임시 저장소
-      // 이 객체에 값을 담아 두면 프론트 컨트롤러(DispatcherServlet)가
-      // ServletRequest 보관소로 옮겨 담을 것이다.
-      HttpSession session) {
-    try {
-      Board board = new Board();
-      board.setTitle(title);
-      board.setContent(content);
+      List<MultipartFile> files,
+      Model model,
+      HttpSession session) throws Exception{
 
-      Member loginUser = (Member) session.getAttribute("loginUser");
-      Member writer = new Member();
-      writer.setNo(loginUser.getNo());
-      board.setWriter(writer);
+    Member loginUser = (Member) session.getAttribute("loginUser");
 
-      List<BoardFile> boardFiles = new ArrayList<>();
-      for (Part part : files) {
-        if (part.getSize() == 0) {
-          continue;
-        }
+    Member writer = new Member();
+    writer.setNo(loginUser.getNo());
+    board.setWriter(writer);
 
-        String filename = UUID.randomUUID().toString();
-        part.write(servletContext.getservletContext.getRealPath("/board/upload/" + filename));
-
-        BoardFile boardFile = new BoardFile();
-        boardFile.setOriginalFilename(part.getSubmittedFileName());
-        boardFile.setFilepath(filename);
-        boardFile.setMimeType(part.getContentType());
-        boardFiles.add(boardFile);
+    List<BoardFile> boardFiles = new ArrayList<>();
+    for (MultipartFile file : files) {
+      if (file.isEmpty()) {
+        continue;
       }
-      board.setAttachedFiles(boardFiles);
 
-      boardService.add(board);
+      String filename = UUID.randomUUID().toString();
+      file.transferTo(new File(servletContext.getRealPath("/board/upload/" + filename)));
 
-    } catch (Exception e) {
-      e.printStackTrace();
-      model.addAttribute("error", "data");
+      BoardFile boardFile = new BoardFile();
+      boardFile.setOriginalFilename(file.getOriginalFilename());
+      boardFile.setFilepath(filename);
+      boardFile.setMimeType(file.getContentType());
+      boardFiles.add(boardFile);
     }
-    return "/board/insert.jsp";
+    board.setAttachedFiles(boardFiles);
+
+    boardService.add(board);
+
+    Map<String,Object> result = new HashMap<>();
+    result.put("status", "success");
+    return result;
   }
 
   @GetMapping("list")
-  public String list(String keyword, Model model,
-      HttpServletRequest request) {
+  @ResponseBody
+  public Object list(String keyword, Model model) {
+    log.debug("BoardController.list() 호출됨!");
+    List<Board> boards = boardService.list(keyword);
 
-    request.setAttribute("boards", boardService.list(keyword));
-    return "/board/list.jsp";
+    // MappingJackson2HttpMessageConverter 가 jackson 라이브러리를 이용해
+    // 자바 객체를 JSON 문자열로 변환하여 클라이언트로 보낸다.
+    // 이 컨버터를 사용하면 굳이 UTF-8 변환을 설정할 필요가 없다.
+    // 즉 produces = "application/json;charset=UTF-8" 를 설정하지 않아도 된다.
+    return boards;
   }
 
   @GetMapping("view")
-  public String view(int no, Model model,
-      HttpServletRequest request) {
-
-    request.setAttribute("board", boardService.get(no));
-    return"/board/view.jsp";
+  @ResponseBody
+  public Object view(int no, Model model) {
+    return boardService.get(no);
   }
 
   @PostMapping("update")
   public String update(
       Board board,
-      Part[] files,
+      List<MultipartFile> files,
       Model model,
-      HttpServletRequest request,
-      HttpSession session) {
-    try {
-      Member loginUser = (Member) session.getAttribute("loginUser");
-
-      Board board = new Board();
-      board.setNo(no);
-      board.setTitle(title);
-      board.setContent(content);
-
-      Board old = boardService.get(board.getNo());
-      if (old.getWriter().getNo() != loginUser.getNo()) {
-        return "redirect:../auth/fail";
-      }
-
-      List<BoardFile> boardFiles = new ArrayList<>();
-      for (Part part : files) {
-        if (part.getSize() == 0) {
-          continue;
-        }
-
-        String filename = UUID.randomUUID().toString();
-        part.write(servletContext.getRealPath("/board/upload/" + filename));
-
-        BoardFile boardFile = new BoardFile();
-        boardFile.setOriginalFilename(part.getSubmittedFileName());
-        boardFile.setFilepath(filename);
-        boardFile.setMimeType(part.getContentType());
-        boardFile.setBoardNo(board.getNo());
-        boardFiles.add(boardFile);
-      }
-      board.setAttachedFiles(boardFiles);
-
-      boardService.update(board);
-
-    }  catch (Exception e) {
-      e.printStackTrace();
-      model.addAttribute("error", "data");
-    }
-
-    return "/board/update.jsp";
-  }
-
-  @GetMapping("delete")
-  public String delete(int no, Model model, HttpSession session) {
-    try {
-      Member loginUser = (Member) session.getAttribute("loginUser");
-
-      Board old = boardService.get(no);
-      if (old.getWriter().getNo() != loginUser.getNo()) {
-        return "redirect:../auth/fail";
-      }
-      boardService.delete(no);
-
-    }  catch (Exception e) {
-      e.printStackTrace();
-      model.addAttribute("error", "data");
-    }
-    return "/board/delete.jsp";
-  }
-
-  @PostMapping("filedelete")
-  public String filedelete(int boardNo,int fileNo,
-      HttpSession session) {
+      HttpSession session) throws Exception {
 
     Member loginUser = (Member) session.getAttribute("loginUser");
 
+    Board old = boardService.get(board.getNo());
+    if (old.getWriter().getNo() != loginUser.getNo()) {
+      return "redirect:../auth/fail";
+    }
+
+    List<BoardFile> boardFiles = new ArrayList<>();
+    for (MultipartFile file : files) {
+      if (file.isEmpty()) {
+        continue;
+      }
+
+      String filename = UUID.randomUUID().toString();
+      file.transferTo(new File(servletContext.getRealPath("/board/upload/" + filename)));
+
+      BoardFile boardFile = new BoardFile();
+      boardFile.setOriginalFilename(file.getOriginalFilename());
+      boardFile.setFilepath(filename);
+      boardFile.setMimeType(file.getContentType());
+      boardFile.setBoardNo(board.getNo());
+      boardFiles.add(boardFile);
+    }
+    board.setAttachedFiles(boardFiles);
+
+    boardService.update(board);
+
+    return "board/update";
+  }
+
+  @PostMapping("delete")
+  public String delete(int no, Model model, HttpSession session) {
+    Member loginUser = (Member) session.getAttribute("loginUser");
+
+    Board old = boardService.get(no);
+    if (old.getWriter().getNo() != loginUser.getNo()) {
+      return "redirect:../auth/fail";
+    }
+    boardService.delete(no);
+
+    return "board/delete";
+  }
+
+  @GetMapping("filedelete")
+  public String filedelete(int boardNo, int fileNo, HttpSession session) {
+    Member loginUser = (Member) session.getAttribute("loginUser");
     Board old = boardService.get(boardNo);
     if (old.getWriter().getNo() != loginUser.getNo()) {
       return "redirect:../auth/fail";
