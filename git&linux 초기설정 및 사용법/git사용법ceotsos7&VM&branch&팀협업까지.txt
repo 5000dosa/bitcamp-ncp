@@ -1,0 +1,591 @@
+브라우저에서 git windows 버전으로 다운로드를해서 설치합니다.
+install하실때 Default로 설정돼어 있는지만 확인하고 기본설정대로 설치하시면 됍니다.
+Visual Studio Code도 같이 설치하시면 편합니다.
+만약 다른 개발자가 편한 소스코드 편집기가 있으면 그걸로 대신 설치해도 됩니다.
+여기서는 Visual Studio Code로 하겠습니다.
+
+이 글은 git를 처음사용하는 개발자가 사용할수 있도록 최대한 자세하게 설명하겠습니다.
+그치만 테스트로 설명하기 에는 한계가 있어 가상머신VM이나 Visual Studio Code등 따로 프로그램을 설치해야
+하는 경우는 필요할 때 유튜브에서 찾아보셔서 설치하는걸 따라하시기 권합니다.
+또한 리눅스 서버기반이고 centos로 설명하겠습니다.
+
+C:\Users\개인컴퓨터이름> 제 컴퓨터에서는 개인컴퓨터 이름이 bitcamp입니다.
+
+C:\Users\bitcamp>mkdir github <--- 그대로 복사 붙여서 치시면 github이라는 풀더가 생성됩니다.
+                                             mkdir 이라는 명령어는 Maker Directory줄여서 mkdir이라고 칩니다.
+                                             git풀더가 이제는 규칙 즉 디렉토리가 됩니다.
+
+C:\Users\bitcamp>cd github <--- CD명령어는 Change Directory의 줄임말입니다. 명령프롬프트에서 디렉토리를
+                                        이동하는 명령어입니다.
+
+C:\Users\bitcamp\github>   <---- cd github 으로 이동이 돼었다는걸 확인 할 수 있습니다.
+
+C:\Users\bitcamp\github>cd..  <--- change directory .. 으로 하위 디렉토리로 이동합니다.
+
+C:\Users\bitcamp>cd github   <---- 그대로 치셔도 돼지만 cd를 치시고 Tab키를 누르면 좀더 편하게 
+                                                디렉토리를 찾을수 있습니다.
+
+-------------------------------------------------------------------
+ 여기까지 오셧으면 github에 가입을 하셔야 합니다. 아이디를 만드시고 github사이트에서 Repositories 즉 자시만의
+저장소를 깃허브에 만들고 토큰까지 발급받아야 합니다. 여기서 테스트파일로 이해하기 힘드니 유튜브에서 찾아서
+하시는걸 추천합니다.
+
+저장소를 만들어다면 블로그까지 만들수 있기 때문에 저는 github.io를 가져서와서 제아이디 5000dosa와 함께
+https://github.com/5000dosa/5000dosa.github.io라는 저장소를 만들었습니다. 참고로 설정은 Public template입니다.
+여기까지 오셧으면 저장소를 윈도우에 clone이라는 명령어로 복제해야합니다.
+
+C:\Users\bitcamp\github>git clone https://github.com/5000dosa/5000dosa.github.io <-- 사이트까지 복제
+
+Cloning into '5000dosa.github.io'...
+remote: Enumerating objects: 50, done.
+remote: Counting objects: 100% (50/50), done.
+remote: Compressing objects: 100% (39/39), done.
+remote: Total 50 (delta 8), reused 44 (delta 5), pack-reused 0
+Receiving objects: 100% (50/50), 8.00 KiB | 8.00 MiB/s, done.
+Resolving deltas: 100% (8/8), done.
+
+CMD 혹은 리눅스 서버에서 복사 붙여넣기는 마우스 우클릭 입니다.
+
+C:\Users\bitcamp\github>cd 5000dosa.github.io  <--- cd 입력하고 Tab키로 저장소로 들어갑니다.
+
+C:\Users\bitcamp\github\5000dosa.github.io>   <--- 앞으로 이 저장소에서 git pull / git push를 할것입니다.
+
+C:\Users\bitcamp\github\vm\centos01>git config --global user.name "5000dosa"
+
+C:\Users\bitcamp\github\vm\centos01>git config --global user.email "ekdpfp@naver.com"
+
+------------------------------------------------------------------config 이라는 명령어는 소스파일에 대한 환경설정을
+                                                                             해줍니다. user.name은 깃허브 아이디를 user.emaill
+                                                                             은 github로그인 이메일입니다. 지금은 본인껄 사용
+                                                                             해서 본인 저장소를 보내는것인데 git pull/push를
+                                                                             사용할 때 좀더 자세하게 설명하겠습니다.
+
+C:\Users\bitcamp\github\vm\centos01>git config -l   <----l은 list입니다. 현재 config 상태를 확인할수 있습니다.
+user.email=ekdpfp@naver.com
+user.name=5000dosa
+
+
+---------------------------------------------------------------------------------
+
+여기까지 왔으면 Virtualbox / Vagrant를 설치하셔야 합니다. 그리고 Hypervisor와 리눅스 VM 개념을 알고오셔야
+이다음 진행돼는 리눅스 CantOs를 이해하실수 있습니다. 지금은 설치과정을 유튜브로 대체하고 이 테스트파일에서는
+어떤 명령어를 입력해야 '값'이 나오는지만 알 수 있습니다.
+
+C:\Users\bitcamp\github\5000dosa.github.io>cd ..
+
+C:\Users\bitcamp\github>mkdir vm
+
+C:\Users\bitcamp\github>cd vm
+
+C:\Users\bitcamp\github\vm>vagrant -v   <--- vagrant -v로 설치여부를 확인 합니다.
+Vagrant 2.3.3
+
+C:\Users\bitcamp\github\vm>mkdir centos01
+
+C:\Users\bitcamp\github\vm>cd centos01
+
+C:\Users\bitcamp\github\vm\centos01>vagrant init "centos/7" <--- init을 사용해서 vagrant을 설치합니다.
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+
+C:\Users\bitcamp\github\vm\centos01>vagrant up  <--- up을 사용해서 서버를 생성합니다. 여기서 생성된 서버는
+                                                                           VirtualBox에서 centos1로 생성된걸 확인할 수 있습니다.
+
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'centos/7'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'centos/7' version '2004.01' is up to date...
+==> default: Setting the name of the VM: centos01_default_1669201039738_10524
+==> default: Fixed port collision for 22 => 2222. Now on port 2200.
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==> default: Forwarding ports...
+    default: 22 (guest) => 2200 (host) (adapter 1)
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2200
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+    default: No guest additions were detected on the base box for this VM! Guest
+    default: additions are required for forwarded ports, shared folders, host only
+    default: networking, and more. If SSH fails on this machine, please install
+    default: the guest additions and repackage the box to continue.
+    default:
+    default: This is not an error message; everything may continue to work properly,
+    default: in which case you may ignore this message.
+==> default: Rsyncing folder: /cygdrive/c/Users/bitcamp/github/vm/centos01/ => /vagrant
+
+C:\Users\bitcamp\github\vm\centos01>
+
+------------------------------------------------------------------------------------------
+
+여기까지 오면 centos02서버를 만들때 복사할수가 있습니다. 
+
+C:\Users\bitcamp\github\vm>mkdir centos02
+
+C:\Users\bitcamp\github\vm>cd centos02
+
+C:\Users\bitcamp\github\vm\centos02>
+
+----------------------------------------- 까지
+
+서버2를 만든 다음 Visual Studio Code에서 centos02를 클릭해 하위 파일로 Vagrantfile을 생성합니다 
+https://app.vagrantup.com/사이트를 들어가서 Centos/7을 클릭해 
+vagrantfile에 있는 코드를 복사합니다.
+
+다시 Visual Studio Code로 돌아와 centos02하위파일 Vagrantfile을 클릭해
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos/7"
+end
+불어넣기를 합니다.   저장하고 vagrant up을 하면 서버가 바로 생성됩니다.
+
+여담으로 서버이름을 바꾸고 싶다면
+config.vm.hostname = "host1.bitcamp" 으로 서버 이름을 변경할 수 있습니다.
+방금 저장한 vagrantfile에 들어가서
+Vagrant.configure("2") do |config|
+    config.vm.hostname = "host1.bitcamp"
+    config.vm.box = "centos/7"
+end
+
+으로 서버이름을 바꿀수도 있습니다. 저는 host1 / host2로 변경했습니다
+
+
+C:\Users\bitcamp\github\vm\centos02>vagrant up  <-----으로 centos/7을 바로 생성할수 있습니다.
+
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'centos/7'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'centos/7' version '2004.01' is up to date...
+==> default: Setting the name of the VM: centos02_default_1669201767991_40178
+==> default: Fixed port collision for 22 => 2222. Now on port 2201.
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==> default: Forwarding ports...
+    default: 22 (guest) => 2201 (host) (adapter 1)
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2201
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+    default: No guest additions were detected on the base box for this VM! Guest
+    default: additions are required for forwarded ports, shared folders, host only
+    default: networking, and more. If SSH fails on this machine, please install
+    default: the guest additions and repackage the box to continue.
+    default:
+    default: This is not an error message; everything may continue to work properly,
+    default: in which case you may ignore this message.
+==> default: Setting hostname...
+==> default: Rsyncing folder: /cygdrive/c/Users/bitcamp/github/vm/centos02/ => /vagrant
+
+C:\Users\bitcamp\github\vm\centos02>
+
+C:\Users\bitcamp\github\vm\centos02>cd ..
+
+C:\Users\bitcamp\github\vm>cd centos01
+
+C:\Users\bitcamp\github\vm\centos01>vagrant halt <----서버를 정지시키는 명령어입니다.
+==> default: Attempting graceful shutdown of VM...
+
+C:\Users\bitcamp\github\vm\centos01>vagrant destroy <---- 서버를 삭제시키는 명령어입니다.
+    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Destroying VM and associated drives...
+
+C:\Users\bitcamp\github\vm\centos01>vagrant up <------서버를 다시 생성할 수 있는 이유는 destroy명령어가
+                                                                             Virtualbox에서만 생성된 서버를 지우기 때문에
+                                                                             Visual Studio Code에 남겨진 Vagrant Centos7을
+                                                                             저장되어 있어 vagrant up명령어로 다시 생성합니다.
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'centos/7'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'centos/7' version '2004.01' is up to date...
+==> default: Setting the name of the VM: centos01_default_1669202170321_58420
+==> default: Fixed port collision for 22 => 2222. Now on port 2200.
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==> default: Forwarding ports...
+    default: 22 (guest) => 2200 (host) (adapter 1)
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2200
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+    default: No guest additions were detected on the base box for this VM! Guest
+    default: additions are required for forwarded ports, shared folders, host only
+    default: networking, and more. If SSH fails on this machine, please install
+    default: the guest additions and repackage the box to continue.
+    default:
+    default: This is not an error message; everything may continue to work properly,
+    default: in which case you may ignore this message.
+==> default: Setting hostname...
+==> default: Rsyncing folder: /cygdrive/c/Users/bitcamp/github/vm/centos01/ => /vagrant
+
+C:\Users\bitcamp\github\vm\centos01>vagrant ssh <--- 서버에 접속합니다.
+[vagrant@host1 ~]$ 
+
+[vagrant@host1 ~]$ mkdir git
+[vagrant@host1 ~]$ cd git
+
+[vagrant@host1 git]$ sudo yum install git -y  <--- 뒤에 -y까지 붙이면 설치할 때마다 묻는 모든대답을 yes로 
+                                                               하겠다는 것니다. sudo는 슈퍼유저 권한으로 yum install git을 
+                                                               설치하겠다는 것니다. superuser do의 약자입니다.
+                                                               yum은 Yellow Dog Update Modified의 약자로 RPM설치를 위해
+                                                               개발판 패키지 매니저이며 RPM설치 시 발생하는 의존성 문제를
+                                                               해결해줍니다.
+
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: mirror.kakao.com
+ * extras: mirror.kakao.com
+ * updates: mirror.kakao.com
+base                                                                                             | 3.6 kB  00:00:00
+extras                                                                                           | 2.9 kB  00:00:00
+updates                                                                                          | 2.9 kB  00:00:00
+(1/4): base/7/x86_64/group_gz                                                                    | 153 kB  00:00:00
+(2/4): extras/7/x86_64/primary_db                                                                | 249 kB  00:00:00
+(3/4): base/7/x86_64/primary_db                                                                  | 6.1 MB  00:00:00
+(4/4): updates/7/x86_64/primary_db                                                               |  18 MB  00:00:01
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:1.8.3.1-23.el7_8 will be installed
+--> Processing Dependency: perl-Git = 1.8.3.1-23.el7_8 for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl >= 5.008 for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(warnings) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(vars) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(strict) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(lib) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(Term::ReadKey) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(Git) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::stat) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::Temp) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::Spec) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::Path) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::Find) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::Copy) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(File::Basename) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(Exporter) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: perl(Error) for package: git-1.8.3.1-23.el7_8.x86_64
+--> Processing Dependency: /usr/bin/perl for package: git-1.8.3.1-23.el7_8.x86_64
+--> Running transaction check
+---> Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+--> Processing Dependency: perl-libs = 4:5.16.3-299.el7_9 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-libs for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-299.el7_9.x86_64
+---> Package perl-Error.noarch 1:0.17020-2.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package perl-Git.noarch 0:1.8.3.1-23.el7_8 will be installed
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-TermReadKey.x86_64 0:2.30-20.el7 will be installed
+--> Running transaction check
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+--> Running transaction check
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--> Running transaction check
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                              Arch                 Version                          Repository             Size
+========================================================================================================================
+Installing:
+ git                                  x86_64               1.8.3.1-23.el7_8                 base                  4.4 M
+Installing for dependencies:
+ perl                                 x86_64               4:5.16.3-299.el7_9               updates               8.0 M
+ perl-Carp                            noarch               1.26-244.el7                     base                   19 k
+ perl-Encode                          x86_64               2.51-7.el7                       base                  1.5 M
+ perl-Error                           noarch               1:0.17020-2.el7                  base                   32 k
+ perl-Exporter                        noarch               5.68-3.el7                       base                   28 k
+ perl-File-Path                       noarch               2.09-2.el7                       base                   26 k
+ perl-File-Temp                       noarch               0.23.01-3.el7                    base                   56 k
+ perl-Filter                          x86_64               1.49-3.el7                       base                   76 k
+ perl-Getopt-Long                     noarch               2.40-3.el7                       base                   56 k
+ perl-Git                             noarch               1.8.3.1-23.el7_8                 base                   56 k
+ perl-HTTP-Tiny                       noarch               0.033-3.el7                      base                   38 k
+ perl-PathTools                       x86_64               3.40-5.el7                       base                   82 k
+ perl-Pod-Escapes                     noarch               1:1.04-299.el7_9                 updates                52 k
+ perl-Pod-Perldoc                     noarch               3.20-4.el7                       base                   87 k
+ perl-Pod-Simple                      noarch               1:3.28-4.el7                     base                  216 k
+ perl-Pod-Usage                       noarch               1.63-3.el7                       base                   27 k
+ perl-Scalar-List-Utils               x86_64               1.27-248.el7                     base                   36 k
+ perl-Socket                          x86_64               2.010-5.el7                      base                   49 k
+ perl-Storable                        x86_64               2.45-3.el7                       base                   77 k
+ perl-TermReadKey                     x86_64               2.30-20.el7                      base                   31 k
+ perl-Text-ParseWords                 noarch               3.29-4.el7                       base                   14 k
+ perl-Time-HiRes                      x86_64               4:1.9725-3.el7                   base                   45 k
+ perl-Time-Local                      noarch               1.2300-2.el7                     base                   24 k
+ perl-constant                        noarch               1.27-2.el7                       base                   19 k
+ perl-libs                            x86_64               4:5.16.3-299.el7_9               updates               690 k
+ perl-macros                          x86_64               4:5.16.3-299.el7_9               updates                44 k
+ perl-parent                          noarch               1:0.225-244.el7                  base                   12 k
+ perl-podlators                       noarch               2.5.1-3.el7                      base                  112 k
+ perl-threads                         x86_64               1.87-4.el7                       base                   49 k
+ perl-threads-shared                  x86_64               1.43-6.el7                       base                   39 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package (+30 Dependent packages)
+
+Total download size: 16 M
+Installed size: 59 M
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/base/packages/perl-Carp-1.26-244.el7.noarch.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Public key for perl-Carp-1.26-244.el7.noarch.rpm is not installed
+(1/31): perl-Carp-1.26-244.el7.noarch.rpm                                                        |  19 kB  00:00:00
+(2/31): perl-Error-0.17020-2.el7.noarch.rpm                                                      |  32 kB  00:00:00
+(3/31): perl-Exporter-5.68-3.el7.noarch.rpm                                                      |  28 kB  00:00:00
+(4/31): perl-File-Path-2.09-2.el7.noarch.rpm                                                     |  26 kB  00:00:00
+(5/31): perl-File-Temp-0.23.01-3.el7.noarch.rpm                                                  |  56 kB  00:00:00
+(6/31): perl-Filter-1.49-3.el7.x86_64.rpm                                                        |  76 kB  00:00:00
+(7/31): perl-Getopt-Long-2.40-3.el7.noarch.rpm                                                   |  56 kB  00:00:00
+(8/31): perl-Git-1.8.3.1-23.el7_8.noarch.rpm                                                     |  56 kB  00:00:00
+(9/31): perl-HTTP-Tiny-0.033-3.el7.noarch.rpm                                                    |  38 kB  00:00:00
+(10/31): perl-Encode-2.51-7.el7.x86_64.rpm                                                       | 1.5 MB  00:00:00
+(11/31): perl-PathTools-3.40-5.el7.x86_64.rpm                                                    |  82 kB  00:00:00
+(12/31): perl-Pod-Perldoc-3.20-4.el7.noarch.rpm                                                  |  87 kB  00:00:00
+(13/31): perl-Pod-Simple-3.28-4.el7.noarch.rpm                                                   | 216 kB  00:00:00
+(14/31): perl-Pod-Usage-1.63-3.el7.noarch.rpm                                                    |  27 kB  00:00:00
+(15/31): perl-Socket-2.010-5.el7.x86_64.rpm                                                      |  49 kB  00:00:00
+(16/31): perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm                                          |  36 kB  00:00:00
+(17/31): perl-Storable-2.45-3.el7.x86_64.rpm                                                     |  77 kB  00:00:00
+(18/31): perl-Text-ParseWords-3.29-4.el7.noarch.rpm                                              |  14 kB  00:00:00
+(19/31): perl-TermReadKey-2.30-20.el7.x86_64.rpm                                                 |  31 kB  00:00:00
+(20/31): perl-Time-HiRes-1.9725-3.el7.x86_64.rpm                                                 |  45 kB  00:00:00
+(21/31): perl-Time-Local-1.2300-2.el7.noarch.rpm                                                 |  24 kB  00:00:00
+(22/31): perl-constant-1.27-2.el7.noarch.rpm                                                     |  19 kB  00:00:00
+Public key for perl-Pod-Escapes-1.04-299.el7_9.noarch.rpm is not installed
+(23/31): perl-Pod-Escapes-1.04-299.el7_9.noarch.rpm                                              |  52 kB  00:00:00
+(24/31): perl-macros-5.16.3-299.el7_9.x86_64.rpm                                                 |  44 kB  00:00:00
+(25/31): perl-podlators-2.5.1-3.el7.noarch.rpm                                                   | 112 kB  00:00:00
+(26/31): perl-threads-1.87-4.el7.x86_64.rpm                                                      |  49 kB  00:00:00
+(27/31): perl-threads-shared-1.43-6.el7.x86_64.rpm                                               |  39 kB  00:00:00
+(28/31): perl-parent-0.225-244.el7.noarch.rpm                                                    |  12 kB  00:00:00
+(29/31): git-1.8.3.1-23.el7_8.x86_64.rpm                                                         | 4.4 MB  00:00:00
+(30/31): perl-libs-5.16.3-299.el7_9.x86_64.rpm                                                   | 690 kB  00:00:00
+(31/31): perl-5.16.3-299.el7_9.x86_64.rpm                                                        | 8.0 MB  00:00:02
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                   7.7 MB/s |  16 MB  00:00:02
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-8.2003.0.el7.centos.x86_64 (@anaconda)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:perl-parent-0.225-244.el7.noarch                                                                  1/31
+  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                                                                   2/31
+  Installing : perl-podlators-2.5.1-3.el7.noarch                                                                   3/31
+  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                                                                  4/31
+  Installing : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                                                            5/31
+  Installing : perl-Encode-2.51-7.el7.x86_64                                                                       6/31
+  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                                                              7/31
+  Installing : perl-Pod-Usage-1.63-3.el7.noarch                                                                    8/31
+  Installing : 4:perl-macros-5.16.3-299.el7_9.x86_64                                                               9/31
+  Installing : perl-Storable-2.45-3.el7.x86_64                                                                    10/31
+  Installing : perl-Exporter-5.68-3.el7.noarch                                                                    11/31
+  Installing : perl-constant-1.27-2.el7.noarch                                                                    12/31
+  Installing : perl-Socket-2.010-5.el7.x86_64                                                                     13/31
+  Installing : perl-Time-Local-1.2300-2.el7.noarch                                                                14/31
+  Installing : perl-Carp-1.26-244.el7.noarch                                                                      15/31
+  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                                                              16/31
+  Installing : perl-PathTools-3.40-5.el7.x86_64                                                                   17/31
+  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                                                         18/31
+  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                                                                19/31
+  Installing : perl-File-Temp-0.23.01-3.el7.noarch                                                                20/31
+  Installing : perl-File-Path-2.09-2.el7.noarch                                                                   21/31
+  Installing : perl-threads-shared-1.43-6.el7.x86_64                                                              22/31
+  Installing : perl-threads-1.87-4.el7.x86_64                                                                     23/31
+  Installing : perl-Filter-1.49-3.el7.x86_64                                                                      24/31
+  Installing : 4:perl-libs-5.16.3-299.el7_9.x86_64                                                                25/31
+  Installing : perl-Getopt-Long-2.40-3.el7.noarch                                                                 26/31
+  Installing : 4:perl-5.16.3-299.el7_9.x86_64                                                                     27/31
+  Installing : 1:perl-Error-0.17020-2.el7.noarch                                                                  28/31
+  Installing : perl-TermReadKey-2.30-20.el7.x86_64                                                                29/31
+  Installing : perl-Git-1.8.3.1-23.el7_8.noarch                                                                   30/31
+  Installing : git-1.8.3.1-23.el7_8.x86_64                                                                        31/31
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                                                                   1/31
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                                                               2/31
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                                                                     3/31
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                                                                     4/31
+  Verifying  : perl-constant-1.27-2.el7.noarch                                                                     5/31
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                                                                    6/31
+  Verifying  : 4:perl-macros-5.16.3-299.el7_9.x86_64                                                               7/31
+  Verifying  : git-1.8.3.1-23.el7_8.x86_64                                                                         8/31
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                                                                  9/31
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                                                                     10/31
+  Verifying  : perl-TermReadKey-2.30-20.el7.x86_64                                                                11/31
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                                                                12/31
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                                                                13/31
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                                                                14/31
+  Verifying  : 1:perl-Pod-Escapes-1.04-299.el7_9.noarch                                                           15/31
+  Verifying  : perl-Git-1.8.3.1-23.el7_8.noarch                                                                   16/31
+  Verifying  : perl-Carp-1.26-244.el7.noarch                                                                      17/31
+  Verifying  : 1:perl-Error-0.17020-2.el7.noarch                                                                  18/31
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                                                              19/31
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                                                         20/31
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                                                                   21/31
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                                                                      22/31
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                                                                 23/31
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                                                                  24/31
+  Verifying  : 4:perl-5.16.3-299.el7_9.x86_64                                                                     25/31
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                                                                   26/31
+  Verifying  : perl-threads-1.87-4.el7.x86_64                                                                     27/31
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                                                                      28/31
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                                                                 29/31
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                                                             30/31
+  Verifying  : 4:perl-libs-5.16.3-299.el7_9.x86_64                                                                31/31
+
+Installed:
+  git.x86_64 0:1.8.3.1-23.el7_8
+
+Dependency Installed:
+  perl.x86_64 4:5.16.3-299.el7_9                                perl-Carp.noarch 0:1.26-244.el7
+  perl-Encode.x86_64 0:2.51-7.el7                               perl-Error.noarch 1:0.17020-2.el7
+  perl-Exporter.noarch 0:5.68-3.el7                             perl-File-Path.noarch 0:2.09-2.el7
+  perl-File-Temp.noarch 0:0.23.01-3.el7                         perl-Filter.x86_64 0:1.49-3.el7
+  perl-Getopt-Long.noarch 0:2.40-3.el7                          perl-Git.noarch 0:1.8.3.1-23.el7_8
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7                           perl-PathTools.x86_64 0:3.40-5.el7
+  perl-Pod-Escapes.noarch 1:1.04-299.el7_9                      perl-Pod-Perldoc.noarch 0:3.20-4.el7
+  perl-Pod-Simple.noarch 1:3.28-4.el7                           perl-Pod-Usage.noarch 0:1.63-3.el7
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7                  perl-Socket.x86_64 0:2.010-5.el7
+  perl-Storable.x86_64 0:2.45-3.el7                             perl-TermReadKey.x86_64 0:2.30-20.el7
+  perl-Text-ParseWords.noarch 0:3.29-4.el7                      perl-Time-HiRes.x86_64 4:1.9725-3.el7
+  perl-Time-Local.noarch 0:1.2300-2.el7                         perl-constant.noarch 0:1.27-2.el7
+  perl-libs.x86_64 4:5.16.3-299.el7_9                           perl-macros.x86_64 4:5.16.3-299.el7_9
+  perl-parent.noarch 1:0.225-244.el7                            perl-podlators.noarch 0:2.5.1-3.el7
+  perl-threads.x86_64 0:1.87-4.el7                              perl-threads-shared.x86_64 0:1.43-6.el7
+
+Complete!
+[vagrant@host1 git]$
+
+---------------------------------------------------------------여기까지 git 설치완료 
+
+
+[vagrant@host1 git]$ sudo install nano -y <---- nano는 리눅스용 텍스트 편집기입니다.
+
+install: invalid option -- 'y'
+Try 'install --help' for more information.
+[vagrant@host1 git]$ sudo yum install nano -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.kakao.com
+ * extras: mirror.kakao.com
+ * updates: mirror.kakao.com
+Resolving Dependencies
+--> Running transaction check
+---> Package nano.x86_64 0:2.3.1-10.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                  Arch                       Version                             Repository                Size
+========================================================================================================================
+Installing:
+ nano                     x86_64                     2.3.1-10.el7                        base                     440 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total download size: 440 k
+Installed size: 1.6 M
+Downloading packages:
+nano-2.3.1-10.el7.x86_64.rpm                                                                     | 440 kB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : nano-2.3.1-10.el7.x86_64                                                                             1/1
+  Verifying  : nano-2.3.1-10.el7.x86_64                                                                             1/1
+
+Installed:
+  nano.x86_64 0:2.3.1-10.el7
+
+Complete!
+[vagrant@host1 git]$
+
+-------------------------------------여기까지 리눅스 서버에서 git과 nano를 설치했습니다.
+                                            서버2도 똑같이 하면 됩니다.
+
+

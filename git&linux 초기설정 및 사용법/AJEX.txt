@@ -1,0 +1,138 @@
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07>node app.js  < --  console.log("서버 시작했음!"); 실행해서
+서버 시작했음!                                                                           명령문 나오는것 확인
+
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07>npm init      <-----express - node.js 웹 설치 
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.                                                     <------- enter 
+package name: (ex07)                                                              <------- enter 따로 설정값없이 끝까지 입력
+version: (1.0.0)
+description:
+entry point: (app.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07\package.json:
+
+{
+  "name": "ex07",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes)                                                                 <-------------- 여기가 끝
+
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07
+
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07>dir
+
+2022-12-15  오후 04:22               198 package.json        <---------- packge.json 설치확인
+
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07>npm install express --save  <----설치 저장
+
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07>node app.js  <-----  서버 여는것 확인
+3000번 포트에서 서버 시작했음!
+
+============app.js 파일 수정 시작===================================
+
+// express 라이브러리 로딩하기
+const express = require('express');
+const port = 3000; // 웹서버 포트 번호
+
+// express()를 호출하여 웹서버를 준비한다.
+const app = express();
+
+// 클라이언트 요청에 대해 호출될 매서드를 등록
+app.get(                      // GET 요청이 들어 왔을 때 호출될 매서드 지정
+  '/exam01-1',                // 요청 URL
+  (req, res) => {             // 요청 핸들러: 요청이 들어 왔을 때 호출되는 매서드
+    res.set('Access-Control-Allow-Origin', '*');  // CORS 문제 해결
+    res.set('Content-Type', 'text/plain; charset=UTF-8');
+    res.send('Hello!');
+  } 
+); 
+
+
+// 웹서버 실행하기
+app.listen(
+  3000,            // 포트 번호 지정
+  () => {          // 서버가 시작되었을 때 호출될 함수 = 리스너 = 이벤트 핸들러
+    console.log(`${port}번 포트에서 서버 시작했음!`);
+  } 
+);
+
+=================app.js 파일 수정끝 =================================
+
+
+C:\Users\bitcamp\git\bitcamp-ncp\javascript\ex07>node app.js\ <<------ 서버를 다시 열어서
+3000번 포트에서 서버 시작했음!
+
+================= exam01-1.html 파일 생성 ==================
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex07</title>
+</head>
+<body>
+<h1>AJAX - XMLHttpRequest()</h1>
+<button id="btn1">요청</button><br>
+<textarea id="ta" cols="80" rows="10"></textarea>
+
+<script>
+"use strict"
+
+// XMLHttpRequest()
+// => 동기/비동기 HTTP 요청을 할 때 사용한다.
+// => 전체 페이지를 갱신하지 않고 페이지의 일부만 갱신하는 용도로 쓴다.
+// => 서버는 요청에 대한 응답으로 HTML 일부 코드나 XML, JSON 데이터를 전송한다.
+// => 이런 기법을 AJAX(Asynchronous JavaScript And XML)이라 부른다.
+
+// 버튼을 클릭할 때 서버에 HTTP 요청하여 응답 결과를 textarea 태그에 출력한다.
+var ta = document.querySelector("#ta");
+
+document.querySelector("#btn1").onclick = () => {
+
+    //1) AJAX 객체 준비 
+    var xhr = new XMLHttpRequest();
+    
+    //2) 서버에 소켓 연결(동기 방식으로 요청)
+    // => 1번 파라미터: HTTP 요청 method. ex) GET, POST, HEAD ...
+    // => 2번 파라미터: 요청 URL
+    // => 3번 파라미터: 비동기 여부
+    xhr.open("GET", "http://127.0.0.1:3000/exam01-1", false);
+    
+    //3) 서버에 HTTP(규칙에 따라) 요청을 보낸다.
+    // => 동기 방식으로 연결되었을 경우 서버에서 응답할 때까지 리턴하지 않는다.
+    xhr.send();
+    
+    //4) 서버가 응답한 콘텐트를 꺼낸다.
+    ta.value = xhr.responseText;
+};
+
+</script>
+</body>
+</html>
+
+====================== exam01-1.html 완료============================
+
+인터넷 주소 창을 열어서 http://localhost:3000/exam01-1 로 들어가 Hello! 확인
+
+

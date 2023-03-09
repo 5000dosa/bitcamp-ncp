@@ -1,0 +1,575 @@
+[vagrant@host1 bitcamp-ncp]$ cd ..
+[vagrant@host1 git]$ git clone https://github.com/bitcamp-test1/bitcamp-test
+Cloning into 'bitcamp-test'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+[vagrant@host1 git]$ cd bitcamp-test
+[vagrant@host1 bitcamp-test]$ git branch
+* main
+[vagrant@host1 bitcamp-test]$ gir branch 5000dosa
+-bash: gir: command not found
+[vagrant@host1 bitcamp-test]$ git btanch
+git: 'btanch' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+[vagrant@host1 bitcamp-test]$ git brabch 5000dosa
+git: 'brabch' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+[vagrant@host1 bitcamp-test]$ gti branch 5000dosa
+-bash: gti: command not found
+[vagrant@host1 bitcamp-test]$ git branch 5000dosa
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git checkout 5000dosa
+Switched to branch '5000dosa'
+[vagrant@host1 bitcamp-test]$ git branch
+* 5000dosa
+  main
+[vagrant@host1 bitcamp-test]$ git log --oneline
+b0be094 (HEAD -> 5000dosa, origin/main, origin/HEAD, main) Initial commit
+[vagrant@host1 bitcamp-test]$ nano q.txt
+[vagrant@host1 bitcamp-test]$ git add .
+[vagrant@host1 bitcamp-test]$ git commit -m "생성"
+[5000dosa 0d9ea7d] 생성
+ 1 file changed, 1 insertion(+)
+ create mode 100644 q.txt
+[vagrant@host1 bitcamp-test]$ nano q.txt
+[vagrant@host1 bitcamp-test]$ git add .
+[vagrant@host1 bitcamp-test]$ git commit -m "변경"
+[5000dosa 742dd20] 변경
+ 1 file changed, 1 insertion(+)
+[vagrant@host1 bitcamp-test]$ nano q.txt
+[vagrant@host1 bitcamp-test]$ ls
+q.txt  README.md
+[vagrant@host1 bitcamp-test]$ rm dr q.txt
+rm: cannot remove ‘dr’: No such file or directory
+[vagrant@host1 bitcamp-test]$ gir rm q.txt
+-bash: gir: command not found
+[vagrant@host1 bitcamp-test]$ git rm q.txt
+rm 'q.txt'
+[vagrant@host1 bitcamp-test]$ ls
+README.md
+[vagrant@host1 bitcamp-test]$ git add .
+[vagrant@host1 bitcamp-test]$ git commit -m "삭제"
+[5000dosa f427ba0] 삭제
+ 1 file changed, 2 deletions(-)
+ delete mode 100644 q.txt
+[vagrant@host1 bitcamp-test]$ git log --oneline
+f427ba0 (HEAD -> 5000dosa) 삭제
+742dd20 변경
+0d9ea7d 생성
+b0be094 (origin/main, origin/HEAD, main) Initial commit
+[vagrant@host1 bitcamp-test]$ git pull
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 10 (delta 2), reused 10 (delta 2), pack-reused 0
+Unpacking objects: 100% (10/10), 953 bytes | 953.00 KiB/s, done.
+From https://github.com/bitcamp-test1/bitcamp-test
+ * [new branch]      jaeseop    -> origin/jaeseop
+   b0be094..310ff4b  main       -> origin/main
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> 5000dosa
+
+[vagrant@host1 bitcamp-test]$ git push
+fatal: The current branch 5000dosa has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin 5000dosa
+
+[vagrant@host1 bitcamp-test]$ git log --oneline
+f427ba0 (HEAD -> 5000dosa) 삭제
+742dd20 변경
+0d9ea7d 생성
+b0be094 (main) Initial commit
+[vagrant@host1 bitcamp-test]$ git push
+fatal: The current branch 5000dosa has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin 5000dosa
+
+[vagrant@host1 bitcamp-test]$ git branch
+* 5000dosa
+  main
+[vagrant@host1 bitcamp-test]$ git checkout main
+Switched to branch 'main'
+Your branch is behind 'origin/main' by 4 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git merge
+Updating b0be094..310ff4b
+Fast-forward
+ wish.txt.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 wish.txt.txt
+[vagrant@host1 bitcamp-test]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+remote: Permission to bitcamp-test1/bitcamp-test.git denied to 5000dosa.
+fatal: unable to access 'https://github.com/bitcamp-test1/bitcamp-test/': The requested URL returned error: 403
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git log --oneline
+310ff4b (HEAD -> main, origin/main, origin/jaeseop, origin/HEAD) wish 내용 변경
+173446e study.txt 삭제
+6bfe557 study.txt추가 내용추가
+a6c4ba1 wish.txt 생성 내용추가
+b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git branch]
+git: 'branch]' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git checkout 5000dosa
+Switched to branch '5000dosa'
+[vagrant@host1 bitcamp-test]$ git merge
+fatal: No remote for the current branch.
+[vagrant@host1 bitcamp-test]$ git branch
+* 5000dosa
+  main
+[vagrant@host1 bitcamp-test]$ nano 2.txt
+[vagrant@host1 bitcamp-test]$ git add .
+[vagrant@host1 bitcamp-test]$ git commit -m "cccc"
+[5000dosa 47dc83f] cccc
+ 1 file changed, 1 insertion(+)
+ create mode 100644 2.txt
+[vagrant@host1 bitcamp-test]$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+remote: Permission to bitcamp-test1/bitcamp-test.git denied to 5000dosa.
+fatal: unable to access 'https://github.com/bitcamp-test1/bitcamp-test/': The requested URL returned error: 403
+[vagrant@host1 bitcamp-test]$ git pull
+Already up to date.
+[vagrant@host1 bitcamp-test]$ git log --oneline
+310ff4b (HEAD -> main, origin/main, origin/jaeseop, origin/HEAD) wish 내용 변경
+173446e study.txt 삭제
+6bfe557 study.txt추가 내용추가
+a6c4ba1 wish.txt 생성 내용추가
+b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+* 47dc83f (5000dosa) cccc
+* f427ba0 삭제
+* 742dd20 변경
+* 0d9ea7d 생성
+| * 310ff4b (HEAD -> main, origin/main, origin/jaeseop, origin/HEAD) wish 내용 변경
+| * 173446e study.txt 삭제
+| * 6bfe557 study.txt추가 내용추가
+| * a6c4ba1 wish.txt 생성 내용추가
+|/
+* b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git merge
+Already up to date.
+[vagrant@host1 bitcamp-test]$ git remote -v
+origin  https://github.com/bitcamp-test1/bitcamp-test (fetch)
+origin  https://github.com/bitcamp-test1/bitcamp-test (push)
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+* 47dc83f (5000dosa) cccc
+* f427ba0 삭제
+* 742dd20 변경
+* 0d9ea7d 생성
+| * 310ff4b (HEAD -> main, origin/main, origin/jaeseop, origin/HEAD) wish 내용 변경
+| * 173446e study.txt 삭제
+| * 6bfe557 study.txt추가 내용추가
+| * a6c4ba1 wish.txt 생성 내용추가
+|/
+* b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git checkout main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+[vagrant@host1 bitcamp-test]$ git pull
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 8 (delta 0), reused 8 (delta 0), pack-reused 0
+Unpacking objects: 100% (8/8), 858 bytes | 858.00 KiB/s, done.
+From https://github.com/bitcamp-test1/bitcamp-test
+   310ff4b..4b9aa4e  main       -> origin/main
+Updating 310ff4b..4b9aa4e
+Fast-forward
+[vagrant@host1 bitcamp-test]$ ls
+README.md  wish.txt.txt
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+* 47dc83f (5000dosa) cccc
+* f427ba0 삭제
+* 742dd20 변경
+* 0d9ea7d 생성
+| *   4b9aa4e (HEAD -> main, origin/main, origin/HEAD) 4:pull
+| |\
+| | * 310ff4b (origin/jaeseop) wish 내용 변경
+| | * 173446e study.txt 삭제
+| | * 6bfe557 study.txt추가 내용추가
+| | * a6c4ba1 wish.txt 생성 내용추가
+| |/
+|/|
+| * fd1a1d4 3:file deletion
+| * dd39e16 2:file modify
+| * 6464168 1:file create
+|/
+* b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ ls
+README.md  wish.txt.txt
+[vagrant@host1 bitcamp-test]$ git checkout 5000dosa
+Switched to branch '5000dosa'
+[vagrant@host1 bitcamp-test]$ ls
+2.txt  README.md
+[vagrant@host1 bitcamp-test]$ git merge main
+Merge made by the 'recursive' strategy.
+ wish.txt.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 wish.txt.txt
+[vagrant@host1 bitcamp-test]$ ls
+2.txt  README.md  wish.txt.txt
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   c000773 (HEAD -> 5000dosa) merge 해야함
+|\
+| *   4b9aa4e (origin/main, origin/HEAD, main) 4:pull
+| |\
+| | * 310ff4b (origin/jaeseop) wish 내용 변경
+| | * 173446e study.txt 삭제
+| | * 6bfe557 study.txt추가 내용추가
+| | * a6c4ba1 wish.txt 생성 내용추가
+| * | fd1a1d4 3:file deletion
+| * | dd39e16 2:file modify
+| * | 6464168 1:file create
+| |/
+* | 47dc83f cccc
+* | f427ba0 삭제
+* | 742dd20 변경
+* | 0d9ea7d 생성
+|/
+* b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git status
+On branch 5000dosa
+nothing to commit, working tree clean
+[vagrant@host1 bitcamp-test]$ git commit -m "merge를 함"
+On branch 5000dosa
+nothing to commit, working tree clean
+[vagrant@host1 bitcamp-test]$ git add .
+[vagrant@host1 bitcamp-test]$ git commit -m "merge를 함"
+On branch 5000dosa
+nothing to commit, working tree clean
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   c000773 (HEAD -> 5000dosa) merge 해야함
+|\
+| *   4b9aa4e (origin/main, origin/HEAD, main) 4:pull
+| |\
+| | * 310ff4b (origin/jaeseop) wish 내용 변경
+| | * 173446e study.txt 삭제
+| | * 6bfe557 study.txt추가 내용추가
+| | * a6c4ba1 wish.txt 생성 내용추가
+| * | fd1a1d4 3:file deletion
+| * | dd39e16 2:file modify
+| * | 6464168 1:file create
+| |/
+* | 47dc83f cccc
+* | f427ba0 삭제
+* | 742dd20 변경
+* | 0d9ea7d 생성
+|/
+* b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git branch
+* 5000dosa
+  main
+[vagrant@host1 bitcamp-test]$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+[vagrant@host1 bitcamp-test]$ git merge 5000dosa
+Updating 4b9aa4e..c000773
+Fast-forward
+ 2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 2.txt
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   c000773 (HEAD -> main, 5000dosa) merge 해야함
+|\
+| *   4b9aa4e (origin/main, origin/HEAD) 4:pull
+| |\
+| | * 310ff4b (origin/jaeseop) wish 내용 변경
+| | * 173446e study.txt 삭제
+| | * 6bfe557 study.txt추가 내용추가
+| | * a6c4ba1 wish.txt 생성 내용추가
+| * | fd1a1d4 3:file deletion
+| * | dd39e16 2:file modify
+| * | 6464168 1:file create
+| |/
+* | 47dc83f cccc
+* | f427ba0 삭제
+* | 742dd20 변경
+* | 0d9ea7d 생성
+|/
+* b0be094 Initial commit
+[vagrant@host1 bitcamp-test]$ git push
+Username for 'https://github.com': 5000dpsa
+Password for 'https://5000dpsa@github.com':
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/bitcamp-test1/bitcamp-test/'
+[vagrant@host1 bitcamp-test]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+To https://github.com/bitcamp-test1/bitcamp-test
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/bitcamp-test1/bitcamp-test'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[vagrant@host1 bitcamp-test]$ git pull
+remote: Enumerating objects: 41, done.
+remote: Counting objects: 100% (41/41), done.
+remote: Compressing objects: 100% (23/23), done.
+remote: Total 39 (delta 7), reused 38 (delta 6), pack-reused 0
+Unpacking objects: 100% (39/39), 3.39 KiB | 868.00 KiB/s, done.
+From https://github.com/bitcamp-test1/bitcamp-test
+   4b9aa4e..a8e0e63  main       -> origin/main
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint:
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+Merge made by the 'recursive' strategy.
+ jkyun.txt      | 0
+ jy.txt         | 6 ++++++
+ shimwoojun.txt | 1 +
+ 3 files changed, 7 insertions(+)
+ create mode 100644 jkyun.txt
+ create mode 100644 jy.txt
+ create mode 100644 shimwoojun.txt
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   43926eb (HEAD -> main) 다시 머지머지머
+|\
+| *   a8e0e63 (origin/main, origin/HEAD) 우준
+| |\
+| | *   244d197 merge jy
+| | |\
+| | | * 37d7700 5:create txt
+| | * |   bc78721 Merge branch 'main' of https://github.com/bitcamp-test1/bitcamp-test
+| | |\ \
+| | * | | 2ff47f9 2
+| | * | | 0be4769 -3
+| | * | | 56cb932 5
+| | * | | e3047e5 0
+| | * | | 19edc24 -1
+| | * | | 247ff78 1
+| * | | |   937b05b merge
+| |\ \ \ \
+| | | |/ /
+| | |/| |
+| * | | | 7ed197c 삭제
+| * | | | 8a27c63 심
+| * | | | ba87ebd 심
+| * | | | 0ce3012 심우준
+| | |/ /
+| |/| |
+* | | |   c000773 (5000dosa) merge 해야함
+|\ \ \ \
+| | |_|/
+| |/| |
+[vagrant@host1 bitcamp-test]$ git checkout 5000dosa
+Switched to branch '5000dosa'
+[vagrant@host1 bitcamp-test]$ git merge main
+Updating c000773..43926eb
+Fast-forward
+ jkyun.txt      | 0
+ jy.txt         | 6 ++++++
+ shimwoojun.txt | 1 +
+ 3 files changed, 7 insertions(+)
+ create mode 100644 jkyun.txt
+ create mode 100644 jy.txt
+ create mode 100644 shimwoojun.txt
+[vagrant@host1 bitcamp-test]$ ls
+2.txt  jkyun.txt  jy.txt  README.md  shimwoojun.txt  wish.txt.txt
+[vagrant@host1 bitcamp-test]$ git push
+fatal: The current branch 5000dosa has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin 5000dosa
+
+[vagrant@host1 bitcamp-test]$ git push --set-upstream origin 5000dosa
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Enumerating objects: 19, done.
+Counting objects: 100% (19/19), done.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (14/14), 1.29 KiB | 1.29 MiB/s, done.
+Total 14 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+remote:
+remote: Create a pull request for '5000dosa' on GitHub by visiting:
+remote:      https://github.com/bitcamp-test1/bitcamp-test/pull/new/5000dosa
+remote:
+To https://github.com/bitcamp-test1/bitcamp-test
+ * [new branch]      5000dosa -> 5000dosa
+Branch '5000dosa' set up to track remote branch '5000dosa' from 'origin'.
+[vagrant@host1 bitcamp-test]$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 6 commits.
+  (use "git push" to publish your local commits)
+[vagrant@host1 bitcamp-test]$ git branch
+  5000dosa
+* main
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   43926eb (HEAD -> main, origin/5000dosa, 5000dosa) 다시 머지머지머
+|\
+| *   a8e0e63 (origin/main, origin/HEAD) 우준
+| |\
+| | *   244d197 merge jy
+| | |\
+| | | * 37d7700 5:create txt
+| | * |   bc78721 Merge branch 'main' of https://github.com/bitcamp-test1/bitcamp-test
+| | |\ \
+| | * | | 2ff47f9 2
+| | * | | 0be4769 -3
+| | * | | 56cb932 5
+| | * | | e3047e5 0
+| | * | | 19edc24 -1
+| | * | | 247ff78 1
+| * | | |   937b05b merge
+| |\ \ \ \
+| | | |/ /
+| | |/| |
+| * | | | 7ed197c 삭제
+| * | | | 8a27c63 심
+| * | | | ba87ebd 심
+| * | | | 0ce3012 심우준
+| | |/ /
+| |/| |
+* | | |   c000773 merge 해야함
+|\ \ \ \
+| | |_|/
+| |/| |
+[vagrant@host1 bitcamp-test]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/bitcamp-test1/bitcamp-test
+   a8e0e63..43926eb  main -> main
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   43926eb (HEAD -> main, origin/main, origin/HEAD, origin/5000dosa, 5000dosa) 다시 머지머지머
+|\
+| *   a8e0e63 우준
+| |\
+| | *   244d197 merge jy
+| | |\
+| | | * 37d7700 5:create txt
+| | * |   bc78721 Merge branch 'main' of https://github.com/bitcamp-test1/bitcamp-test
+| | |\ \
+| | * | | 2ff47f9 2
+| | * | | 0be4769 -3
+| | * | | 56cb932 5
+| | * | | e3047e5 0
+| | * | | 19edc24 -1
+| | * | | 247ff78 1
+| * | | |   937b05b merge
+| |\ \ \ \
+| | | |/ /
+| | |/| |
+| * | | | 7ed197c 삭제
+| * | | | 8a27c63 심
+| * | | | ba87ebd 심
+| * | | | 0ce3012 심우준
+| | |/ /
+| |/| |
+* | | |   c000773 merge 해야함
+|\ \ \ \
+| | |_|/
+| |/| |
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   43926eb (HEAD -> main, origin/main, origin/HEAD, origin/5000dosa, 5000dosa) 다시 머지머지머
+|\
+| *   a8e0e63 우준
+| |\
+| | *   244d197 merge jy
+| | |\
+| | | * 37d7700 5:create txt
+| | * |   bc78721 Merge branch 'main' of https://github.com/bitcamp-test1/bitcamp-test
+| | |\ \
+| | * | | 2ff47f9 2
+| | * | | 0be4769 -3
+| | * | | 56cb932 5
+| | * | | e3047e5 0
+| | * | | 19edc24 -1
+| | * | | 247ff78 1
+| * | | |   937b05b merge
+| |\ \ \ \
+| | | |/ /
+| | |/| |
+| * | | | 7ed197c 삭제
+| * | | | 8a27c63 심
+| * | | | ba87ebd 심
+| * | | | 0ce3012 심우준
+| | |/ /
+| |/| |
+* | | |   c000773 merge 해야함
+|\ \ \ \
+| | |_|/
+| |/| |
+[vagrant@host1 bitcamp-test]$ git log --oneline --graph --all
+*   43926eb (HEAD -> main, origin/main, origin/HEAD, origin/5000dosa, 5000dosa) 다시 머지머지머
+|\
+| *   a8e0e63 우준
+| |\
+| | *   244d197 merge jy
+| | |\
+| | | * 37d7700 5:create txt
+| | * |   bc78721 Merge branch 'main' of https://github.com/bitcamp-test1/bitcamp-test
+| | |\ \
+| | * | | 2ff47f9 2
+| | * | | 0be4769 -3
+| | * | | 56cb932 5
+| | * | | e3047e5 0
+| | * | | 19edc24 -1
+| | * | | 247ff78 1
+| * | | |   937b05b merge
+| |\ \ \ \
+| | | |/ /
+| | |/| |
+| * | | | 7ed197c 삭제
+| * | | | 8a27c63 심
+| * | | | ba87ebd 심
+| * | | | 0ce3012 심우준
+| | |/ /
+| |/| |
+* | | |   c000773 merge 해야함
+|\ \ \ \
+| | |_|/
+| |/| |
+[vagrant@host1 bitcamp-test]$
+[vagrant@host1 bitcamp-test]$
+

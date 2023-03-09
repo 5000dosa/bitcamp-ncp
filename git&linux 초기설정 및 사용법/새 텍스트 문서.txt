@@ -1,0 +1,76 @@
+https://github.com/eomjinyoung
+비트캠프 소스 다운
+
+숙제
+md.확장자가 뭔지?
+github에서 홈페이지 꾸며보기 - 테마교체
+자기소개, 자기사진 넣기
+
+git config --global user.email ""
+git config --global user.name ""
+
+---------------------------------------
+mkdir vm-projects
+cd vm-projects
+mkdir centos
+cd centos
+
+vargrant init "centos/7"
+--------------
+vagrant up
+
+로컬 vargrant에 보관되어 있는 이미지를 찾아본다
+https://vagrantcloud.com 에서 vm 이미지를 다운로드
+vm 이미지를 압축해체 해서 vm 생성 ->virtualbox에 등록
+설정파일에 등록된 대로 VM설정 변경
+VM실행
+
+
+VM에 ssh로 접속
+        ssh는 보안 터미널
+        암호화해서 데이터를 보안
+
+vagrant ssh 
+현재 vm프로젝트가 생성하고 실행한 리눅스서버에 접속한다 
+pwd 서버홈페이지로 접속
+
+확인하고 vagrant halt로 vm종료
+
+실습 : VM의 서버이름 변경하기
+hostname
+localhost.localdomain
+
+-> myhost.bitcamp
+
+실습2 centos vm 생성 -> 실행-> "myhost3.bitcamp"
+
+1. Centos vm 생성(virtyalbox)
+2. centos vm 실행
+3. 호스트 이름 변경 ->"myhost3.bitcamp"
+
+*기술: centos4 에 깃허브 설치할 떄 sudo yum install git -y 하면 설치할때 All yes 됨
+
+sudo install nano
+
+실습3:  VM생성 및 git 개인페이지 변경하기
+1.centos 5 VM생성
+-project directory 생성
+vagrantfile 준비
+VM실행
+2.centos5 vm접속
+-vm ssh 접속
+3.git 개인페이지 변경 
+1.git 설치
+2. nano 에디터 설치
+3. git config의 email과 name 설정
+4git 개인페이지 저장소 복제
+5.README.md 변경
+5.git commit & push
+
+과제3-리눅스 가상머신 생성
+---------------- 
+로컬git저장소에서 gitignore.io
+
+.gitignore 빼야될것 - windows. linux. eclipse. java. visualstudiocode. macos넣고 검색
+nano .gitignore으로 복사 
+

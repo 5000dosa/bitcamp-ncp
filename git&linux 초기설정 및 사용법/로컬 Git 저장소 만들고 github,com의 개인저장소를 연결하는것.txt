@@ -1,0 +1,506 @@
+Microsoft Windows [Version 10.0.19044.2251]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\bitcamp>cd git
+
+C:\Users\bitcamp\git>cd vm
+
+C:\Users\bitcamp\git\Vm>ce centos1
+'ce'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\Users\bitcamp\git\Vm>cd centos1
+
+C:\Users\bitcamp\git\Vm\centos1>vagrant ssh
+Last login: Mon Nov 21 03:03:36 2022 from 10.0.2.2
+Last login: Mon Nov 21 03:03:36 2022 from 10.0.2.2
+[vagrant@host1 ~]$ cd git
+[vagrant@host1 git]$ git clone "https://github.com/eomjinyoung/bitcamp-study"
+Cloning into 'bitcamp-study'...
+remote: Enumerating objects: 46, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (35/35), done.
+remote: Total 46 (delta 13), reused 39 (delta 9), pack-reused 0
+Unpacking objects: 100% (46/46), done.
+[vagrant@host1 git]$ cd bitcamp-study/
+[vagrant@host1 bitcamp-study]$ ls
+docs  README.md
+[vagrant@host1 bitcamp-study]$ hostname
+host1.bitcamp
+[vagrant@host1 bitcamp-study]$ cd ..
+[vagrant@host1 git]$ cd ..
+[vagrant@host1 ~]$ pwd
+/home/vagrant
+[vagrant@host1 ~]$ git config --system
+usage: git config [options]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-regex]
+    --get-all             get all values: key [value-regex]
+    --get-regexp          get values for regexp: name-regex [value-regex]
+    --replace-all         replace all matching variables: name value [value_regex]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-regex]
+    --unset-all           remove all matches: name [value-regex]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    -e, --edit            open an editor
+    --get-color <slot>    find the color configured: [default]
+    --get-colorbool <slot>
+                          find the color setting: [stdout-is-tty]
+
+Type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --path                value is a path (file or directory name)
+
+Other
+    -z, --null            terminate values with NUL byte
+    --includes            respect include directives on lookup
+
+[vagrant@host1 ~]$ git --system config
+Unknown option: --system
+usage: git [--version] [--help] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+[vagrant@host1 ~]$ git config --global user.name "5000dosa"
+[vagrant@host1 ~]$ git config --global user.email "ekdpfp@naver.com"
+[vagrant@host1 ~]$ git config -l
+user.name=5000dosa
+user.email=ekdpfp@naver.com
+[vagrant@host1 ~]$ git config --list
+user.name=5000dosa
+user.email=ekdpfp@naver.com
+[vagrant@host1 ~]$ git config user.name
+5000dosa
+[vagrant@host1 ~]$ git config user.enail
+[vagrant@host1 ~]$ git config user.email
+ekdpfp@naver.com
+[vagrant@host1 ~]$ git config help
+error: key does not contain a section: help
+[vagrant@host1 ~]$ git help config
+[vagrant@host1 ~]$ git config --help
+[vagrant@host1 ~]$ pwd
+/home/vagrant
+[vagrant@host1 ~]$ cd git
+[vagrant@host1 git]$ ls
+bitcamp-study  cd  default:  mkdir  mkidr  vagrant  vagrnat
+[vagrant@host1 git]$ Local git 저장소 만들기
+-bash: Local: command not found
+[vagrant@host1 git]$ mkdir bitcamp-ncp
+[vagrant@host1 git]$ pwd
+/home/vagrant/git
+[vagrant@host1 git]$ cd ..
+[vagrant@host1 ~]$ cd ..
+[vagrant@host1 home]$ cd ..
+[vagrant@host1 /]$ cd ..
+[vagrant@host1 /]$ cd git
+-bash: cd: git: No such file or directory
+[vagrant@host1 /]$ cd ~
+[vagrant@host1 ~]$ sudo yum install tree
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.kakao.com
+ * extras: mirror.kakao.com
+ * updates: mirror.kakao.com
+Resolving Dependencies
+--> Running transaction check
+---> Package tree.x86_64 0:1.6.0-10.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                  Arch                       Version                             Repository                Size
+========================================================================================================================
+Installing:
+ tree                     x86_64                     1.6.0-10.el7                        base                      46 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total download size: 46 k
+Installed size: 87 k
+Is this ok [y/d/N]: y
+Downloading packages:
+tree-1.6.0-10.el7.x86_64.rpm                                                                     |  46 kB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : tree-1.6.0-10.el7.x86_64                                                                             1/1
+  Verifying  : tree-1.6.0-10.el7.x86_64                                                                             1/1
+
+Installed:
+  tree.x86_64 0:1.6.0-10.el7
+
+Complete!
+[vagrant@host1 ~]$ cd
+[vagrant@host1 ~]$ tree
+.
+└── git
+    ├── bitcamp-ncp
+    ├── bitcamp-study
+    │   ├── docs
+    │   │   ├── 1.\355\224\204\353\241\234\352\267\270\353\236\230\353\260\215_\354\244\200\353\271\204.pdf
+    │   │   ├── 2.\353\246\254\353\210\205\354\212\244.pdf
+    │   │   └── \354\203\201\354\204\270\354\273\244\353\246\254\355\201\230\353\237\274.xlsx
+    │   └── README.md
+    ├── cd
+    ├── default:
+    ├── mkdir
+    ├── mkidr
+    ├── vagrant
+    └── vagrnat
+
+4 directories, 10 files
+[vagrant@host1 ~]$ cd git
+[vagrant@host1 git]$ cd git/bitcamp-ncp
+-bash: cd: git/bitcamp-ncp: No such file or directory
+[vagrant@host1 git]$ cd bitcamp-
+-bash: cd: bitcamp-: No such file or directory
+[vagrant@host1 git]$ cd bitcamp-ncp/
+[vagrant@host1 bitcamp-ncp]$ git init
+Initialized empty Git repository in /home/vagrant/git/bitcamp-ncp/.git/
+[vagrant@host1 bitcamp-ncp]$ ls -a
+.  ..  .git
+[vagrant@host1 bitcamp-ncp]$ ls -al
+total 0
+drwxrwxr-x. 3 vagrant vagrant  18 Nov 21 05:36 .
+drwxrwxr-x. 4 vagrant vagrant 128 Nov 21 05:28 ..
+drwxrwxr-x. 7 vagrant vagrant 119 Nov 21 05:36 .git
+[vagrant@host1 bitcamp-ncp]$ pwd
+/home/vagrant/git/bitcamp-ncp
+[vagrant@host1 bitcamp-ncp]$ vi .gitignore
+[vagrant@host1 bitcamp-ncp]$ cat .gitignore
+# ,gitigonre
+
+[vagrant@host1 bitcamp-ncp]$ sudo yum install nano
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.kakao.com
+ * extras: mirror.kakao.com
+ * updates: mirror.kakao.com
+Resolving Dependencies
+--> Running transaction check
+---> Package nano.x86_64 0:2.3.1-10.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                  Arch                       Version                             Repository                Size
+========================================================================================================================
+Installing:
+ nano                     x86_64                     2.3.1-10.el7                        base                     440 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total download size: 440 k
+Installed size: 1.6 M
+Is this ok [y/d/N]: y
+Downloading packages:
+nano-2.3.1-10.el7.x86_64.rpm                                                                     | 440 kB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : nano-2.3.1-10.el7.x86_64                                                                             1/1
+  Verifying  : nano-2.3.1-10.el7.x86_64                                                                             1/1
+
+Installed:
+  nano.x86_64 0:2.3.1-10.el7
+
+Complete!
+[vagrant@host1 bitcamp-ncp]$ nano . gitignore
+[vagrant@host1 bitcamp-ncp]$ nano . gitignore
+[vagrant@host1 bitcamp-ncp]$ ls -al
+total 8
+drwxrwxr-x. 3 vagrant vagrant   53 Nov 21 05:55 .
+drwxrwxr-x. 4 vagrant vagrant  128 Nov 21 05:28 ..
+drwxrwxr-x. 7 vagrant vagrant  119 Nov 21 05:36 .git
+-rw-rw-r--. 1 vagrant vagrant 3244 Nov 21 05:57 gitignore
+-rw-rw-r--. 1 vagrant vagrant   14 Nov 21 05:43 .gitignore
+[vagrant@host1 bitcamp-ncp]$ nano a.txt
+[vagrant@host1 bitcamp-ncp]$ ls -al
+total 12
+drwxrwxr-x. 3 vagrant vagrant   66 Nov 21 05:58 .
+drwxrwxr-x. 4 vagrant vagrant  128 Nov 21 05:28 ..
+-rw-rw-r--. 1 vagrant vagrant    6 Nov 21 05:58 a.txt
+drwxrwxr-x. 7 vagrant vagrant  119 Nov 21 05:36 .git
+-rw-rw-r--. 1 vagrant vagrant 3244 Nov 21 05:57 gitignore
+-rw-rw-r--. 1 vagrant vagrant   14 Nov 21 05:43 .gitignore
+[vagrant@host1 bitcamp-ncp]$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .gitignore
+#       a.txt
+#       gitignore
+nothing added to commit but untracked files present (use "git add" to track)
+[vagrant@host1 bitcamp-ncp]$ git status --short
+?? .gitignore
+?? a.txt
+?? gitignore
+[vagrant@host1 bitcamp-ncp]$ git add .gtignore
+fatal: pathspec '.gtignore' did not match any files
+[vagrant@host1 bitcamp-ncp]$ git add .gitignore
+[vagrant@host1 bitcamp-ncp]$ git status --short
+A  .gitignore
+?? a.txt
+?? gitignore
+[vagrant@host1 bitcamp-ncp]$ git add gitignore
+[vagrant@host1 bitcamp-ncp]$ git commit -m "1"
+[master (root-commit) 1241982] 1
+ 2 files changed, 203 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 gitignore
+[vagrant@host1 bitcamp-ncp]$ git status --short
+?? a.txt
+[vagrant@host1 bitcamp-ncp]$ nano b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+?? a.txt
+?? b.txt
+[vagrant@host1 bitcamp-ncp]$ git add . a.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+A  a.txt
+A  b.txt
+[vagrant@host1 bitcamp-ncp]$ git commit -m "2"
+[master 581287e] 2
+ 2 files changed, 3 insertions(+)
+ create mode 100644 a.txt
+ create mode 100644 b.txt
+[vagrant@host1 bitcamp-ncp]$ nano a.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M a.txt
+[vagrant@host1 bitcamp-ncp]$ nano b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M a.txt
+[vagrant@host1 bitcamp-ncp]$ git add b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M a.txt
+[vagrant@host1 bitcamp-ncp]$ git commit -m "3"
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   a.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M a.txt
+[vagrant@host1 bitcamp-ncp]$ nano b.xtx
+[vagrant@host1 bitcamp-ncp]$ nano b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M a.txt
+ M b.txt
+[vagrant@host1 bitcamp-ncp]$ git add a.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+M  a.txt
+ M b.txt
+[vagrant@host1 bitcamp-ncp]$ git commit -m"4"
+[master ca04a28] 4
+ 1 file changed, 1 insertion(+)
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M b.txt
+[vagrant@host1 bitcamp-ncp]$ git add b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+M  b.txt
+[vagrant@host1 bitcamp-ncp]$ nano b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+MM b.txt
+[vagrant@host1 bitcamp-ncp]$ git commit -m "5"
+[master c6c4541] 5
+ 1 file changed, 1 insertion(+)
+[vagrant@host1 bitcamp-ncp]$ git status --short
+ M b.txt
+[vagrant@host1 bitcamp-ncp]$ git add b.txt
+[vagrant@host1 bitcamp-ncp]$ git status --short
+M  b.txt
+[vagrant@host1 bitcamp-ncp]$ git commit -m "6"
+[master b0e6e4a] 6
+ 1 file changed, 1 insertion(+)
+[vagrant@host1 bitcamp-ncp]$ git status --short
+[vagrant@host1 bitcamp-ncp]$ git log
+commit b0e6e4a60c221c7277300df266ba399a8fd8fbcc
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:35:34 2022 +0000
+
+    6
+
+commit c6c4541377a753b021483444bfdc8e798f1194a3
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:31:50 2022 +0000
+
+    5
+
+commit ca04a28405f42bd1e13c2d2558a9f8d8db7c2729
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:25:43 2022 +0000
+
+    4
+
+commit 581287ed3034f0a26fbec7470506f72d429a341f
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:17:44 2022 +0000
+
+    2
+
+commit 124198251ff2467211c1ab5106a156b57b9c7e6d
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:13:43 2022 +0000
+
+    1
+[vagrant@host1 bitcamp-ncp]$ git log -p -2
+commit b0e6e4a60c221c7277300df266ba399a8fd8fbcc
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:35:34 2022 +0000
+
+    6
+
+diff --git a/b.txt b/b.txt
+index e12be03..6c4368f 100644
+--- a/b.txt
++++ b/b.txt
+@@ -1,2 +1,3 @@
+ 2222
+ 1111
++3333
+
+commit c6c4541377a753b021483444bfdc8e798f1194a3
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:31:50 2022 +0000
+
+    5
+
+diff --git a/b.txt b/b.txt
+index c7dc989..e12be03 100644
+--- a/b.txt
++++ b/b.txt
+@@ -1 +1,2 @@
+ 2222
++1111
+[vagrant@host1 bitcamp-ncp]$ git log --oneline
+b0e6e4a 6
+c6c4541 5
+ca04a28 4
+581287e 2
+1241982 1
+[vagrant@host1 bitcamp-ncp]$ git log --oneline --graph --all
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host1 bitcamp-ncp]$ git remote
+[vagrant@host1 bitcamp-ncp]$ git remote add origin https://github.com/5000dosa/bitcamp-ncp
+[vagrant@host1 bitcamp-ncp]$ git remote
+origin
+[vagrant@host1 bitcamp-ncp]$ git remote show origin
+* remote origin
+  Fetch URL: https://github.com/5000dosa/bitcamp-ncp
+  Push  URL: https://github.com/5000dosa/bitcamp-ncp
+  HEAD branch: main
+  Remote branch:
+    main new (next fetch will store in remotes/origin)
+[vagrant@host1 bitcamp-ncp]$ git pull
+warning: no common commits
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/5000dosa/bitcamp-ncp
+ * [new branch]      main       -> origin/main
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> master
+
+[vagrant@host1 bitcamp-ncp]$ git pull origin main
+From https://github.com/5000dosa/bitcamp-ncp
+ * branch            main       -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+[vagrant@host1 bitcamp-ncp]$ ls
+a.txt  b.txt  gitignore  README.md
+[vagrant@host1 bitcamp-ncp]$ git add .
+[vagrant@host1 bitcamp-ncp]$ git commit -m "7"
+# On branch master
+nothing to commit, working directory clean
+[vagrant@host1 bitcamp-ncp]$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Everything up-to-date
+[vagrant@host1 bitcamp-ncp]$ git config --global push.default simple
+[vagrant@host1 bitcamp-ncp]$ git add .
+[vagrant@host1 bitcamp-ncp]$ git commit -m "7"
+# On branch master
+nothing to commit, working directory clean
+[vagrant@host1 bitcamp-ncp]$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+[vagrant@host1 bitcamp-ncp]$ git push --set-upstream origin main
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+error: src refspec main does not match any.
+error: failed to push some refs to 'https://github.com/5000dosa/bitcamp-ncp'
+[vagrant@host1 bitcamp-ncp]$ git branch
+* master
+[vagrant@host1 bitcamp-ncp]$ git branch -m main
+[vagrant@host1 bitcamp-ncp]$ git branch
+* main
+[vagrant@host1 bitcamp-ncp]$ git push --set-upstream origin main
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Counting objects: 20, done.
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (19/19), 2.92 KiB | 0 bytes/s, done.
+Total 19 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/5000dosa/bitcamp-ncp
+   879a1f8..576725b  main -> main
+Branch main set up to track remote branch main from origin.
+[vagrant@host1 bitcamp-ncp]$

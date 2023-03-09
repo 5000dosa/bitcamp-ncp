@@ -1,0 +1,1027 @@
+Microsoft Windows [Version 10.0.19044.2251]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\bitcamp>cd vm
+지정된 경로를 찾을 수 없습니다.
+
+C:\Users\bitcamp>cd git
+
+C:\Users\bitcamp\git>cd Vm
+
+C:\Users\bitcamp\git\Vm>cd centos2
+
+C:\Users\bitcamp\git\Vm\centos2>vagrant ssh
+Last login: Mon Nov 21 09:08:45 2022 from 10.0.2.2
+Last login: Mon Nov 21 09:08:45 2022 from 10.0.2.2
+[vagrant@host2 ~]$ clear
+[vagrant@host2 ~]$ ls
+git
+[vagrant@host2 ~]$ cd git
+[vagrant@host2 git]$ pwd
+/home/vagrant/git
+[vagrant@host2 git]$ git clone https://github.com/5000dosa/bitcamp-ncp
+Cloning into 'bitcamp-ncp'...
+remote: Enumerating objects: 26, done.
+remote: Counting objects: 100% (26/26), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 26 (delta 4), reused 22 (delta 3), pack-reused 0
+Unpacking objects: 100% (26/26), done.
+[vagrant@host2 git]$ sudo yum install http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-1.noarch
+.rpm
+Loaded plugins: fastestmirror
+wandisco-git-release-7-1.noarch.rpm                                                              | 4.5 kB  00:00:00
+Examining /var/tmp/yum-root-GVMVc6/wandisco-git-release-7-1.noarch.rpm: wandisco-git-release-7-1.noarch
+Marking /var/tmp/yum-root-GVMVc6/wandisco-git-release-7-1.noarch.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package wandisco-git-release.noarch 0:7-1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                          Arch               Version         Repository                                    Size
+========================================================================================================================
+Installing:
+ wandisco-git-release             noarch             7-1             /wandisco-git-release-7-1.noarch             1.9 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package 
+
+Total size: 1.9 k
+Installed size: 1.9 k
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : wandisco-git-release-7-1.noarch                                                                      1/1
+  Verifying  : wandisco-git-release-7-1.noarch                                                                      1/1
+
+Installed:
+  wandisco-git-release.noarch 0:7-1
+
+Complete!
+[vagrant@host2 git]$ yum remove git
+Loaded plugins: fastestmirror
+You need to be root to perform this command.
+[vagrant@host2 git]$ you install git
+-bash: you: command not found
+[vagrant@host2 git]$ cd ..]
+-bash: cd: ..]: No such file or directory
+[vagrant@host2 git]$ cd ..
+[vagrant@host2 ~]$ yum remove git
+Loaded plugins: fastestmirror
+You need to be root to perform this command.
+[vagrant@host2 ~]$ sudo yum install git -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.navercorp.com
+ * extras: mirror.navercorp.com
+ * updates: mirror.navercorp.com
+WANdisco-git                                                                                     | 2.9 kB  00:00:00
+base                                                                                             | 3.6 kB  00:00:00
+extras                                                                                           | 2.9 kB  00:00:00
+updates                                                                                          | 2.9 kB  00:00:00
+WANdisco-git/7/x86_64/primary_db                                                                 | 153 kB  00:00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:1.8.3.1-23.el7_8 will be updated
+--> Processing Dependency: git = 1.8.3.1-23.el7_8 for package: perl-Git-1.8.3.1-23.el7_8.noarch
+---> Package git.x86_64 0:2.31.1-1.WANdisco.1657096008 will be an update
+--> Processing Dependency: perl(Digest::SHA) for package: git-2.31.1-1.WANdisco.1657096008.x86_64
+--> Running transaction check
+---> Package perl-Digest-SHA.x86_64 1:5.85-4.el7 will be installed
+--> Processing Dependency: perl(Digest::base) for package: 1:perl-Digest-SHA-5.85-4.el7.x86_64
+---> Package perl-Git.noarch 0:1.8.3.1-23.el7_8 will be updated
+---> Package perl-Git.noarch 0:2.31.1-1.WANdisco.1657096008 will be an update
+--> Running transaction check
+---> Package perl-Digest.noarch 0:1.17-245.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                     Arch               Version                                  Repository                Size
+========================================================================================================================
+Updating:
+ git                         x86_64             2.31.1-1.WANdisco.1657096008             WANdisco-git             8.7 M
+Installing for dependencies:
+ perl-Digest                 noarch             1.17-245.el7                             base                      23 k
+ perl-Digest-SHA             x86_64             1:5.85-4.el7                             base                      58 k
+Updating for dependencies:
+ perl-Git                    noarch             2.31.1-1.WANdisco.1657096008             WANdisco-git              23 k
+
+Transaction Summary
+========================================================================================================================
+Install             ( 2 Dependent packages)
+Upgrade  1 Package  (+1 Dependent package)
+
+Total download size: 8.8 M
+Downloading packages:
+No Presto metadata available for WANdisco-git
+(1/4): perl-Digest-1.17-245.el7.noarch.rpm                                                       |  23 kB  00:00:00
+(2/4): perl-Digest-SHA-5.85-4.el7.x86_64.rpm                                                     |  58 kB  00:00:00
+warning: /var/cache/yum/x86_64/7/WANdisco-git/packages/perl-Git-2.31.1-1.WANdisco.1657096008.noarch.rpm: Header V4 DSA/SHA1 Signature, key ID 3bbf077a: NOKEY
+Public key for perl-Git-2.31.1-1.WANdisco.1657096008.noarch.rpm is not installed
+(3/4): perl-Git-2.31.1-1.WANdisco.1657096008.noarch.rpm                                          |  23 kB  00:00:00
+(4/4): git-2.31.1-1.WANdisco.1657096008.x86_64.rpm                                               | 8.7 MB  00:00:07
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                   1.1 MB/s | 8.8 MB  00:00:07
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco
+Importing GPG key 0x3BBF077A:
+ Userid     : "WANdisco (http://WANdisco.com - We Make Software Happen...) <software-key@wandisco.com>"
+ Fingerprint: 69c1 be83 da54 cbed 6889 72f8 e9f0 e922 3bbf 077a
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-WANdisco
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : perl-Digest-1.17-245.el7.noarch                                                                      1/6
+  Installing : 1:perl-Digest-SHA-5.85-4.el7.x86_64                                                                  2/6
+  Updating   : git-2.31.1-1.WANdisco.1657096008.x86_64                                                              3/6
+  Updating   : perl-Git-2.31.1-1.WANdisco.1657096008.noarch                                                         4/6
+  Cleanup    : git-1.8.3.1-23.el7_8.x86_64                                                                          5/6
+  Cleanup    : perl-Git-1.8.3.1-23.el7_8.noarch                                                                     6/6
+  Verifying  : perl-Git-2.31.1-1.WANdisco.1657096008.noarch                                                         1/6
+  Verifying  : git-2.31.1-1.WANdisco.1657096008.x86_64                                                              2/6
+  Verifying  : 1:perl-Digest-SHA-5.85-4.el7.x86_64                                                                  3/6
+  Verifying  : perl-Digest-1.17-245.el7.noarch                                                                      4/6
+  Verifying  : git-1.8.3.1-23.el7_8.x86_64                                                                          5/6
+  Verifying  : perl-Git-1.8.3.1-23.el7_8.noarch                                                                     6/6
+
+Dependency Installed:
+  perl-Digest.noarch 0:1.17-245.el7                         perl-Digest-SHA.x86_64 1:5.85-4.el7
+
+Updated:
+  git.x86_64 0:2.31.1-1.WANdisco.1657096008
+
+Dependency Updated:
+  perl-Git.noarch 0:2.31.1-1.WANdisco.1657096008
+
+Complete!
+[vagrant@host2 ~]$ git --version
+git version 2.31.1
+[vagrant@host2 ~]$ cd git
+[vagrant@host2 git]$ cd bitcamp-ncp
+[vagrant@host2 bitcamp-ncp]$ pwed
+-bash: pwed: command not found
+[vagrant@host2 bitcamp-ncp]$ pwd
+/home/vagrant/git/bitcamp-ncp
+[vagrant@host2 bitcamp-ncp]$ tree
+.
+├── a.txt
+├── b.txt
+├── hello2.txt
+└── README.md
+
+0 directories, 4 files
+[vagrant@host2 bitcamp-ncp]$ cd ..
+[vagrant@host2 git]$ tree
+.
+├── bitcamp-ncp
+│   ├── a.txt
+│   ├── b.txt
+│   ├── hello2.txt
+│   └── README.md
+├── bitcamp-ncp2
+│   ├── a.txt
+│   ├── b.txt
+│   ├── c.txt
+│   └── README.md
+└── bitcamp-study
+    ├── docs
+    │   ├── 1.\355\224\204\353\241\234\352\267\270\353\236\230\353\260\215_\354\244\200\353\271\204.pdf
+    │   ├── 2.\353\246\254\353\210\205\354\212\244.pdf
+    │   └── \354\203\201\354\204\270\354\273\244\353\246\254\355\201\230\353\237\274.xlsx
+    └── README.md
+
+4 directories, 12 files
+[vagrant@host2 git]$ cd bitcamp-ncp
+[vagrant@host2 bitcamp-ncp]$ pwd
+/home/vagrant/git/bitcamp-ncp
+[vagrant@host2 bitcamp-ncp]$ git log --online --graph --all
+fatal: unrecognized argument: --online
+[vagrant@host2 bitcamp-ncp]$ git log --online --graph --all
+fatal: unrecognized argument: --online
+[vagrant@host2 bitcamp-ncp]$ git clone https://github.com/5000dosa/bitcamp-ncp
+Cloning into 'bitcamp-ncp'...
+remote: Enumerating objects: 26, done.
+remote: Counting objects: 100% (26/26), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 26 (delta 4), reused 22 (delta 3), pack-reused 0
+Receiving objects: 100% (26/26), 4.14 KiB | 4.14 MiB/s, done.
+Resolving deltas: 100% (4/4), done.
+[vagrant@host2 bitcamp-ncp]$ git log --online --graph --all
+fatal: unrecognized argument: --online
+[vagrant@host2 bitcamp-ncp]$ git log
+commit 0a8ab22c4dafcb3b2e3f355f3c56009fca78edc3 (HEAD -> main, origin/main, origin/HEAD)
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Tue Nov 22 02:44:03 2022 +0000
+
+    11
+
+commit 576725b2dadec5600549c7884ed933ea611ed1cc
+Merge: b0e6e4a 879a1f8
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 08:40:22 2022 +0000
+
+    Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+
+commit 879a1f87cdf32c262ce9d35d1a9e802bb5acacf9
+Author: 5000dosa <118055665+5000dosa@users.noreply.github.com>
+Date:   Mon Nov 21 17:35:36 2022 +0900
+
+    Initial commit
+
+commit b0e6e4a60c221c7277300df266ba399a8fd8fbcc
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:35:34 2022 +0000
+
+    6
+
+commit c6c4541377a753b021483444bfdc8e798f1194a3
+Author: 5000dosa <ekdpfp@naver.com>
+Date:   Mon Nov 21 06:31:50 2022 +0000
+
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* 0a8ab22 (HEAD -> main, origin/main, origin/HEAD) 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ cat a.txt
+1111
+2222
+
+[vagrant@host2 bitcamp-ncp]$ git pull
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), 235 bytes | 235.00 KiB/s, done.
+From https://github.com/5000dosa/bitcamp-ncp
+   0a8ab22..7dab29c  main       -> origin/main
+Updating 0a8ab22..7dab29c
+Fast-forward
+ a.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* 7dab29c (HEAD -> main, origin/main, origin/HEAD) 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ cat a.txt
+1111
+2222
+3333
+[vagrant@host2 bitcamp-ncp]$ git remote
+origin
+[vagrant@host2 bitcamp-ncp]$ git remote -v
+origin  https://github.com/5000dosa/bitcamp-ncp (fetch)
+origin  https://github.com/5000dosa/bitcamp-ncp (push)
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* 7dab29c (HEAD -> main, origin/main, origin/HEAD) 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git fetch
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), 239 bytes | 239.00 KiB/s, done.
+From https://github.com/5000dosa/bitcamp-ncp
+   7dab29c..abc0643  main       -> origin/main
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* abc0643 (origin/main, origin/HEAD) 13
+* 7dab29c (HEAD -> main) 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git merge
+Updating 7dab29c..abc0643
+Fast-forward
+ a.txt | 1 +
+ 1 file changed, 1 insertion(+)
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* abc0643 (HEAD -> main, origin/main, origin/HEAD) 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git fetch
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 9 (delta 3), reused 7 (delta 1), pack-reused 0
+Unpacking objects: 100% (9/9), 691 bytes | 691.00 KiB/s, done.
+From https://github.com/5000dosa/bitcamp-ncp
+   abc0643..f17a0f5  main       -> origin/main
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* f17a0f5 (origin/main, origin/HEAD) 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 (HEAD -> main) 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git merge
+Updating abc0643..f17a0f5
+Fast-forward
+ a.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* f17a0f5 (HEAD -> main, origin/main, origin/HEAD) 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ nano a.txt
+[vagrant@host2 bitcamp-ncp]$ nano a.txt
+[vagrant@host2 bitcamp-ncp]$ git add .
+warning: adding embedded git repository: bitcamp-ncp
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> bitcamp-ncp
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached bitcamp-ncp
+hint:
+hint: See "git help submodule" for more information.
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ gti commlt "19"
+-bash: gti: command not found
+[vagrant@host2 bitcamp-ncp]$ git commit "19"
+error: pathspec '19' did not match any file(s) known to git
+[vagrant@host2 bitcamp-ncp]$ git config --golbal user.name "5000dosa"
+error: unknown option `golbal'
+usage: git config [<options>]
+
+Config file location
+    --global              use global config file
+    --system              use system config file
+    --local               use repository config file
+    --worktree            use per-worktree config file
+    -f, --file <file>     use given config file
+    --blob <blob-id>      read config from given blob object
+
+Action
+    --get                 get value: name [value-pattern]
+    --get-all             get all values: key [value-pattern]
+    --get-regexp          get values for regexp: name-regex [value-pattern]
+    --get-urlmatch        get value specific for the URL: section[.var] URL
+    --replace-all         replace all matching variables: name value [value-pattern]
+    --add                 add a new variable: name value
+    --unset               remove a variable: name [value-pattern]
+    --unset-all           remove all matches: name [value-pattern]
+    --rename-section      rename section: old-name new-name
+    --remove-section      remove a section: name
+    -l, --list            list all
+    --fixed-value         use string equality when comparing values to 'value-pattern'
+    -e, --edit            open an editor
+    --get-color           find the color configured: slot [default]
+    --get-colorbool       find the color setting: slot [stdout-is-tty]
+
+Type
+    -t, --type <>         value is given this type
+    --bool                value is "true" or "false"
+    --int                 value is decimal number
+    --bool-or-int         value is --bool or --int
+    --bool-or-str         value is --bool or string
+    --path                value is a path (file or directory name)
+    --expiry-date         value is an expiry date
+
+Other
+    -z, --null            terminate values with NUL byte
+    --name-only           show variable names only
+    --includes            respect include directives on lookup
+    --show-origin         show origin of config (file, standard input, blob, command line)
+    --show-scope          show scope of config (worktree, local, global, system, command)
+    --default <value>     with --get, use default value when missing entry
+
+[vagrant@host2 bitcamp-ncp]$ git config --global user.name "5000dosa"
+[vagrant@host2 bitcamp-ncp]$ git config --global user.email "ekdpfp@naver.com"
+[vagrant@host2 bitcamp-ncp]$ git commit -m "19"
+[main 55b4199] 19
+ 2 files changed, 2 insertions(+)
+ create mode 160000 bitcamp-ncp
+[vagrant@host2 bitcamp-ncp]$ nano a.txt
+[vagrant@host2 bitcamp-ncp]$ cat a.txt
+1111
+2222
+3333
+4444
+5555
+6666
+7777
+8888
+9999
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ git commit -m "20"
+[main aae0986] 20
+ 1 file changed, 1 insertion(+)
+[vagrant@host2 bitcamp-ncp]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+To https://github.com/5000dosa/bitcamp-ncp
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/5000dosa/bitcamp-ncp'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* aae0986 (HEAD -> main) 20
+* 55b4199 19
+* f17a0f5 (origin/main, origin/HEAD) 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git fetch
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 2), reused 6 (delta 2), pack-reused 0
+Unpacking objects: 100% (6/6), 466 bytes | 466.00 KiB/s, done.
+From https://github.com/5000dosa/bitcamp-ncp
+   f17a0f5..bd026a0  main       -> origin/main
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* aae0986 (HEAD -> main) 20
+* 55b4199 19
+| * bd026a0 (origin/main, origin/HEAD) 18
+| * 8921e15 17
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git marge
+git: 'marge' is not a git command. See 'git --help'.
+
+The most similar command is
+        merge
+[vagrant@host2 bitcamp-ncp]$ git merge
+Merge made by the 'recursive' strategy.
+ b.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+*   8d9a826 (HEAD -> main) 21
+|\
+| * bd026a0 (origin/main, origin/HEAD) 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Enumerating objects: 12, done.
+Counting objects: 100% (11/11), done.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 742 bytes | 742.00 KiB/s, done.
+Total 8 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+To https://github.com/5000dosa/bitcamp-ncp
+   bd026a0..8d9a826  main -> main
+[vagrant@host2 bitcamp-ncp]$
+
+-----------------------------------------------------오전
+
+[vagrant@host2 bitcamp-ncp]$ git pull
+Already up to date.
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+*   8d9a826 (HEAD -> main, origin/main, origin/HEAD) 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ nano a.txt
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+*   8d9a826 (HEAD -> main, origin/main, origin/HEAD) 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git pull
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), 264 bytes | 264.00 KiB/s, done.
+From https://github.com/5000dosa/bitcamp-ncp
+   8d9a826..beb417b  main       -> origin/main
+Updating 8d9a826..beb417b
+error: Your local changes to the following files would be overwritten by merge:
+        a.txt
+Please commit your changes or stash them before you merge.
+Aborting
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* beb417b (origin/main, origin/HEAD) 22
+*   8d9a826 (HEAD -> main) 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ cat a.txt
+1111
+2222
+3333
+4444
+5555
+6666
+7777
+8888
+9999
+host2=>yyy
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ git commit -m "23"
+[main 9ee59ed] 23
+ 1 file changed, 1 insertion(+)
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* 9ee59ed (HEAD -> main) 23
+| * beb417b (origin/main, origin/HEAD) 22
+|/
+*   8d9a826 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git merge
+Auto-merging a.txt
+CONFLICT (content): Merge conflict in a.txt
+Automatic merge failed; fix conflicts and then commit the result.
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* 9ee59ed (HEAD -> main) 23
+| * beb417b (origin/main, origin/HEAD) 22
+|/
+*   8d9a826 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ cat a.txt
+1111
+2222
+3333
+4444
+5555
+6666
+7777
+8888
+9999
+<<<<<<< HEAD
+host2=>yyy
+=======
+host1=>xxx
+>>>>>>> refs/remotes/origin/main
+[vagrant@host2 bitcamp-ncp]$ nano a.txt
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+* 9ee59ed (HEAD -> main) 23
+| * beb417b (origin/main, origin/HEAD) 22
+|/
+*   8d9a826 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ git commit -m "24"
+[main d6108ba] 24
+[vagrant@host2 bitcamp-ncp]$ git log --oneline --graph --all
+*   d6108ba (HEAD -> main) 24
+|\
+| * beb417b (origin/main, origin/HEAD) 22
+* | 9ee59ed 23
+|/
+*   8d9a826 21
+|\
+| * bd026a0 18
+| * 8921e15 17
+* | aae0986 20
+* | 55b4199 19
+|/
+* f17a0f5 16
+* 70275fd 15
+* 23e911a 14
+* abc0643 13
+* 7dab29c 12
+* 0a8ab22 11
+*   576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+|\
+| * 879a1f8 Initial commit
+* b0e6e4a 6
+* c6c4541 5
+* ca04a28 4
+* 581287e 2
+* 1241982 1
+[vagrant@host2 bitcamp-ncp]$
+[vagrant@host2 bitcamp-ncp]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 541 bytes | 541.00 KiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+To https://github.com/5000dosa/bitcamp-ncp
+   beb417b..d6108ba  main -> main
+[vagrant@host2 bitcamp-ncp]$ nano d.txt
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ git commit -m "30"
+[main 0e17e5a] 30
+ 1 file changed, 1 insertion(+)
+ create mode 100644 d.txt
+[vagrant@host2 bitcamp-ncp]$ git branch x1
+[vagrant@host2 bitcamp-ncp]$ git checkout x1
+Switched to branch 'x1'
+[vagrant@host2 bitcamp-ncp]$ git branch
+  main
+* x1
+[vagrant@host2 bitcamp-ncp]$ nano x.txt
+[vagrant@host2 bitcamp-ncp]$
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ git commit -m "41"
+[x1 e09448d] 41
+ 1 file changed, 1 insertion(+)
+ create mode 100644 x.txt
+[vagrant@host2 bitcamp-ncp]$ nano x.txt
+[vagrant@host2 bitcamp-ncp]$ git add .
+[vagrant@host2 bitcamp-ncp]$ git commit -b "42"
+error: unknown switch `b'
+usage: git commit [<options>] [--] <pathspec>...
+
+    -q, --quiet           suppress summary after successful commit
+    -v, --verbose         show diff in commit message template
+
+Commit message options
+    -F, --file <file>     read message from file
+    --author <author>     override author for commit
+    --date <date>         override date for commit
+    -m, --message <message>
+                          commit message
+    -c, --reedit-message <commit>
+                          reuse and edit message from specified commit
+    -C, --reuse-message <commit>
+                          reuse message from specified commit
+    --fixup <commit>      use autosquash formatted message to fixup specified commit
+    --squash <commit>     use autosquash formatted message to squash specified commit
+    --reset-author        the commit is authored by me now (used with -C/-c/--amend)
+    -s, --signoff         add a Signed-off-by trailer
+    -t, --template <file>
+                          use specified template file
+    -e, --edit            force edit of commit
+    --cleanup <mode>      how to strip spaces and #comments from message
+    --status              include status in commit message template
+    -S, --gpg-sign[=<key-id>]
+                          GPG sign commit
+
+Commit contents options
+    -a, --all             commit all changed files
+    -i, --include         add specified files to index for commit
+    --interactive         interactively add files
+    -p, --patch           interactively add changes
+    -o, --only            commit only specified files
+    -n, --no-verify       bypass pre-commit and commit-msg hooks
+    --dry-run             show what would be committed
+    --short               show status concisely
+    --branch              show branch information
+    --ahead-behind        compute full ahead/behind values
+    --porcelain           machine-readable output
+    --long                show status in long format (default)
+    -z, --null            terminate entries with NUL
+    --amend               amend previous commit
+    --no-post-rewrite     bypass post-rewrite hook
+    -u, --untracked-files[=<mode>]
+                          show untracked files, optional modes: all, normal, no. (Default: all)
+    --pathspec-from-file <file>
+                          read pathspec from file
+    --pathspec-file-nul   with --pathspec-from-file, pathspec elements are separated with NUL character
+
+[vagrant@host2 bitcamp-ncp]$ git commit -m "42"
+[x1 c6f5353] 42
+ 1 file changed, 1 insertion(+)
+[vagrant@host2 bitcamp-ncp]$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+[vagrant@host2 bitcamp-ncp]$ ls
+a.txt  bitcamp-ncp  b.txt  d.txt  hello2.txt  README.md
+[vagrant@host2 bitcamp-ncp]$ git merge x1
+Updating 0e17e5a..c6f5353
+Fast-forward
+ x.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 x.txt
+[vagrant@host2 bitcamp-ncp]$ git log --oneline
+c6f5353 (HEAD -> main, x1) 42
+e09448d 41
+0e17e5a 30
+d6108ba (origin/main, origin/HEAD) 24
+9ee59ed 23
+beb417b 22
+8d9a826 21
+aae0986 20
+55b4199 19
+bd026a0 18
+8921e15 17
+f17a0f5 16
+70275fd 15
+23e911a 14
+abc0643 13
+7dab29c 12
+0a8ab22 11
+576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+879a1f8 Initial commit
+b0e6e4a 6
+c6c4541 5
+ca04a28 4
+581287e 2
+1241982 1
+[vagrant@host2 bitcamp-ncp]$ git pull
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 6 (delta 2), reused 6 (delta 2), pack-reused 0
+Unpacking objects: 100% (6/6), 455 bytes | 455.00 KiB/s, done.
+From https://github.com/5000dosa/bitcamp-ncp
+   d6108ba..dfd3969  main       -> origin/main
+hint: Pulling without specifying how to reconcile divergent branches is
+hint: discouraged. You can squelch this message by running one of the following
+hint: commands sometime before your next pull:
+hint:
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+Removing a.txt
+Merge made by the 'recursive' strategy.
+ a.txt | 11 -----------
+ b.txt |  1 +
+ c.txt |  1 +
+ 3 files changed, 2 insertions(+), 11 deletions(-)
+ delete mode 100644 a.txt
+ create mode 100644 c.txt
+[vagrant@host2 bitcamp-ncp]$ git log --oneline
+8cc89da (HEAD -> main) merge
+c6f5353 (x1) 42
+e09448d 41
+0e17e5a 30
+dfd3969 (origin/main, origin/HEAD) 26
+d2f4643 25
+d6108ba 24
+9ee59ed 23
+beb417b 22
+8d9a826 21
+aae0986 20
+55b4199 19
+bd026a0 18
+8921e15 17
+f17a0f5 16
+70275fd 15
+23e911a 14
+abc0643 13
+7dab29c 12
+0a8ab22 11
+576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+879a1f8 Initial commit
+b0e6e4a 6
+c6c4541 5
+ca04a28 4
+581287e 2
+1241982 1
+[vagrant@host2 bitcamp-ncp]$ git push
+Username for 'https://github.com': 5000dosa
+Password for 'https://5000dosa@github.com':
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 852 bytes | 852.00 KiB/s, done.
+Total 9 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 2 local objects.
+To https://github.com/5000dosa/bitcamp-ncp
+   dfd3969..8cc89da  main -> main
+[vagrant@host2 bitcamp-ncp]$ git branch
+* main
+  x1
+[vagrant@host2 bitcamp-ncp]$ git branch -d x1
+Deleted branch x1 (was c6f5353).
+[vagrant@host2 bitcamp-ncp]$ git branch
+* main
+[vagrant@host2 bitcamp-ncp]$ git log --oneline
+8cc89da (HEAD -> main, origin/main, origin/HEAD) merge
+c6f5353 42
+e09448d 41
+0e17e5a 30
+dfd3969 26
+d2f4643 25
+d6108ba 24
+9ee59ed 23
+beb417b 22
+8d9a826 21
+aae0986 20
+55b4199 19
+bd026a0 18
+8921e15 17
+f17a0f5 16
+70275fd 15
+23e911a 14
+abc0643 13
+7dab29c 12
+0a8ab22 11
+576725b Merge branch 'main' of https://github.com/5000dosa/bitcamp-ncp
+879a1f8 Initial commit
+b0e6e4a 6
+c6c4541 5
+ca04a28 4
+581287e 2
+1241982 1
+[vagrant@host2 bitcamp-ncp]$
+[vagrant@host2 bitcamp-ncp]$

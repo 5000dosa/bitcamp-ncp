@@ -1,0 +1,226 @@
+gcc를 하기전에 C언어로 
+
+#include <stdio.h>
+
+int main() {
+    printf("Hello, world!\n");
+    return 0;
+}
+
+작성해서 hello.c 파일을 만듭니다.
+작성한 파일을 깃허브에 git push해서
+리눅스 서버에서 git pull로 받아옵니다.
+받아온다음 gcc를 설치합니다.
+
+
+[vagrant@host1 bitcamp-ncp]$ sudo yum install gcc <--------gcc 다운로드
+
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: mirror.navercorp.com
+ * extras: mirror.navercorp.com
+ * updates: mirrors.ustc.edu.cn
+WANdisco-git                                                                                     | 2.9 kB  00:00:00
+base                                                                                             | 3.6 kB  00:00:00
+extras                                                                                           | 2.9 kB  00:00:00
+updates                                                                                          | 2.9 kB  00:00:00
+updates/7/x86_64/primary_db                                                                      |  18 MB  00:00:02
+Resolving Dependencies
+--> Running transaction check
+---> Package gcc.x86_64 0:4.8.5-44.el7 will be installed
+--> Processing Dependency: libgomp = 4.8.5-44.el7 for package: gcc-4.8.5-44.el7.x86_64
+--> Processing Dependency: cpp = 4.8.5-44.el7 for package: gcc-4.8.5-44.el7.x86_64
+--> Processing Dependency: libgcc >= 4.8.5-44.el7 for package: gcc-4.8.5-44.el7.x86_64
+--> Processing Dependency: glibc-devel >= 2.2.90-12 for package: gcc-4.8.5-44.el7.x86_64
+--> Processing Dependency: libmpfr.so.4()(64bit) for package: gcc-4.8.5-44.el7.x86_64
+--> Processing Dependency: libmpc.so.3()(64bit) for package: gcc-4.8.5-44.el7.x86_64
+--> Running transaction check
+---> Package cpp.x86_64 0:4.8.5-44.el7 will be installed
+---> Package glibc-devel.x86_64 0:2.17-326.el7_9 will be installed
+--> Processing Dependency: glibc-headers = 2.17-326.el7_9 for package: glibc-devel-2.17-326.el7_9.x86_64
+--> Processing Dependency: glibc = 2.17-326.el7_9 for package: glibc-devel-2.17-326.el7_9.x86_64
+--> Processing Dependency: glibc-headers for package: glibc-devel-2.17-326.el7_9.x86_64
+---> Package libgcc.x86_64 0:4.8.5-39.el7 will be updated
+---> Package libgcc.x86_64 0:4.8.5-44.el7 will be an update
+---> Package libgomp.x86_64 0:4.8.5-39.el7 will be updated
+---> Package libgomp.x86_64 0:4.8.5-44.el7 will be an update
+---> Package libmpc.x86_64 0:1.0.1-3.el7 will be installed
+---> Package mpfr.x86_64 0:3.1.1-4.el7 will be installed
+--> Running transaction check
+---> Package glibc.x86_64 0:2.17-307.el7.1 will be updated
+--> Processing Dependency: glibc = 2.17-307.el7.1 for package: glibc-common-2.17-307.el7.1.x86_64
+---> Package glibc.x86_64 0:2.17-326.el7_9 will be an update
+---> Package glibc-headers.x86_64 0:2.17-326.el7_9 will be installed
+--> Processing Dependency: kernel-headers >= 2.2.1 for package: glibc-headers-2.17-326.el7_9.x86_64
+--> Processing Dependency: kernel-headers for package: glibc-headers-2.17-326.el7_9.x86_64
+--> Running transaction check
+---> Package glibc-common.x86_64 0:2.17-307.el7.1 will be updated
+---> Package glibc-common.x86_64 0:2.17-326.el7_9 will be an update
+---> Package kernel-headers.x86_64 0:3.10.0-1160.80.1.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                       Arch                  Version                               Repository              Size
+========================================================================================================================
+Installing:
+ gcc                           x86_64                4.8.5-44.el7                          base                    16 M
+Installing for dependencies:
+ cpp                           x86_64                4.8.5-44.el7                          base                   5.9 M
+ glibc-devel                   x86_64                2.17-326.el7_9                        updates                1.1 M
+ glibc-headers                 x86_64                2.17-326.el7_9                        updates                691 k
+ kernel-headers                x86_64                3.10.0-1160.80.1.el7                  updates                9.1 M
+ libmpc                        x86_64                1.0.1-3.el7                           base                    51 k
+ mpfr                          x86_64                3.1.1-4.el7                           base                   203 k
+Updating for dependencies:
+ glibc                         x86_64                2.17-326.el7_9                        updates                3.6 M
+ glibc-common                  x86_64                2.17-326.el7_9                        updates                 12 M
+ libgcc                        x86_64                4.8.5-44.el7                          base                   103 k
+ libgomp                       x86_64                4.8.5-44.el7                          base                   159 k
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package  (+6 Dependent packages)
+Upgrade             ( 4 Dependent packages)
+
+Total download size: 49 M
+Is this ok [y/d/N]: y
+Downloading packages:
+No Presto metadata available for base
+No Presto metadata available for updates
+(1/11): cpp-4.8.5-44.el7.x86_64.rpm                                                              | 5.9 MB  00:00:00
+(2/11): gcc-4.8.5-44.el7.x86_64.rpm                                                              |  16 MB  00:00:00
+(3/11): glibc-2.17-326.el7_9.x86_64.rpm                                                          | 3.6 MB  00:00:01
+(4/11): glibc-devel-2.17-326.el7_9.x86_64.rpm                                                    | 1.1 MB  00:00:00
+(5/11): glibc-headers-2.17-326.el7_9.x86_64.rpm                                                  | 691 kB  00:00:00
+(6/11): libgcc-4.8.5-44.el7.x86_64.rpm                                                           | 103 kB  00:00:00
+(7/11): libgomp-4.8.5-44.el7.x86_64.rpm                                                          | 159 kB  00:00:00
+(8/11): mpfr-3.1.1-4.el7.x86_64.rpm                                                              | 203 kB  00:00:00
+(9/11): glibc-common-2.17-326.el7_9.x86_64.rpm                                                   |  12 MB  00:00:02
+(10/11): libmpc-1.0.1-3.el7.x86_64.rpm                                                           |  51 kB  00:00:00
+(11/11): kernel-headers-3.10.0-1160.80.1.el7.x86_64.rpm                                          | 9.1 MB  00:00:00
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                    21 MB/s |  49 MB  00:00:02
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : libgcc-4.8.5-44.el7.x86_64                                                                          1/15
+  Updating   : glibc-2.17-326.el7_9.x86_64                                                                         2/15
+  Updating   : glibc-common-2.17-326.el7_9.x86_64                                                                  3/15
+  Installing : mpfr-3.1.1-4.el7.x86_64                                                                             4/15
+  Installing : libmpc-1.0.1-3.el7.x86_64                                                                           5/15
+  Installing : cpp-4.8.5-44.el7.x86_64                                                                             6/15
+  Updating   : libgomp-4.8.5-44.el7.x86_64                                                                         7/15
+  Installing : kernel-headers-3.10.0-1160.80.1.el7.x86_64                                                          8/15
+  Installing : glibc-headers-2.17-326.el7_9.x86_64                                                                 9/15
+  Installing : glibc-devel-2.17-326.el7_9.x86_64                                                                  10/15
+  Installing : gcc-4.8.5-44.el7.x86_64                                                                            11/15
+  Cleanup    : libgomp-4.8.5-39.el7.x86_64                                                                        12/15
+  Cleanup    : glibc-2.17-307.el7.1.x86_64                                                                        13/15
+  Cleanup    : glibc-common-2.17-307.el7.1.x86_64                                                                 14/15
+  Cleanup    : libgcc-4.8.5-39.el7.x86_64                                                                         15/15
+  Verifying  : glibc-common-2.17-326.el7_9.x86_64                                                                  1/15
+  Verifying  : kernel-headers-3.10.0-1160.80.1.el7.x86_64                                                          2/15
+  Verifying  : glibc-2.17-326.el7_9.x86_64                                                                         3/15
+  Verifying  : mpfr-3.1.1-4.el7.x86_64                                                                             4/15
+  Verifying  : glibc-devel-2.17-326.el7_9.x86_64                                                                   5/15
+  Verifying  : cpp-4.8.5-44.el7.x86_64                                                                             6/15
+  Verifying  : glibc-headers-2.17-326.el7_9.x86_64                                                                 7/15
+  Verifying  : gcc-4.8.5-44.el7.x86_64                                                                             8/15
+  Verifying  : libmpc-1.0.1-3.el7.x86_64                                                                           9/15
+  Verifying  : libgcc-4.8.5-44.el7.x86_64                                                                         10/15
+  Verifying  : libgomp-4.8.5-44.el7.x86_64                                                                        11/15
+  Verifying  : glibc-common-2.17-307.el7.1.x86_64                                                                 12/15
+  Verifying  : libgcc-4.8.5-39.el7.x86_64                                                                         13/15
+  Verifying  : libgomp-4.8.5-39.el7.x86_64                                                                        14/15
+  Verifying  : glibc-2.17-307.el7.1.x86_64                                                                        15/15
+
+Installed:
+  gcc.x86_64 0:4.8.5-44.el7
+
+Dependency Installed:
+  cpp.x86_64 0:4.8.5-44.el7                               glibc-devel.x86_64 0:2.17-326.el7_9
+  glibc-headers.x86_64 0:2.17-326.el7_9                   kernel-headers.x86_64 0:3.10.0-1160.80.1.el7
+  libmpc.x86_64 0:1.0.1-3.el7                             mpfr.x86_64 0:3.1.1-4.el7
+
+Dependency Updated:
+  glibc.x86_64 0:2.17-326.el7_9        glibc-common.x86_64 0:2.17-326.el7_9        libgcc.x86_64 0:4.8.5-44.el7
+  libgomp.x86_64 0:4.8.5-44.el7
+
+Complete!
+
+[vagrant@host1 bitcamp-ncp]$ gcc --version   <------ 설치확인
+gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+
+[vagrant@host1 bitcamp-ncp]$ gcc hello.c   <----- 리눅스 컴파일 명령어
+
+[vagrant@host1 bitcamp-ncp]$ ls  <------ 컴파일 된것 확인 
+a.out
+
+[vagrant@host1 bitcamp-ncp]$ ./a.out  <------ 리눅스명령어 출력
+Hello, world!
+
+----------------------------------------------------------------------------------------------
+
+이제는 리눅스서버에서 컴파일을 해봤으니 윈도우에서도 해보겠습니다.
+먼저 윈도우용 gcc를 설치합니다. 직접 브라우저에서 윈도우용 gcc를 검색해서 설치해야합니다.
+저는 http://cygwin.com/install.html 이사이트에서 setup-x86 64.exe를 설치했습니다.
+버전이나 운영체제에 맞게 설치하시면 됍니다.
+
+cygwin을 설치할 때에 url은 아무거나 하시면 돼는데 저는 한국서버인 kaist에서 했습니다.
+다음 cygwin에서 gcc-core을 다운받아야 하는데 이것 직접찾아보셔서 하는걸 추천합니다.
+gcc-core까지 설치했으면
+
+윈도우 검색창에서 '환경'을 쳐 '시스템 환경 변수편집'을 클릭
+고급->환경변수(N)->시스템 변수(s)안에 path편집->새로만들기(N)->새로만든것 클릭 바로 찾아보기->
+C:\cygwin64\bin지정 해서 생성
+편집창에 C:\cygwin64\bin 추가돼면 성공
+
+cmd 창 열어서 윈도우 에서 버전 확인
+
+C:\Users\bitcamp>gcc --version
+
+C:\Users\bitcamp>cd git
+
+C:\Users\bitcamp\git>cd bitcamp-ncp
+
+C:\Users\bitcamp\git\bitcamp-ncp>gcc hello.c
+
+C:\Users\bitcamp\git\bitcamp-ncp>dir  <------------디렉토리 확인
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: C478-F75F
+
+ C:\Users\bitcamp\git\bitcamp-ncp 디렉터리
+
+2022-12-01  오후 01:03    <DIR>          .
+2022-12-01  오후 01:03    <DIR>          ..
+2022-11-22  오후 01:05             3,306 .gitignore
+2022-12-01  오후 01:03            67,360 a.exe        <------------------- a.exe 확인
+2022-12-01  오후 12:44             8,360 a.out
+2022-11-22  오후 04:38                36 b.txt
+2022-11-22  오후 01:08    <DIR>          bitcamp-ncp
+2022-11-22  오후 04:38                 6 c.txt
+2022-11-28  오전 09:40    <DIR>          css
+2022-11-22  오후 04:38                 6 d.txt
+2022-12-01  오후 12:44                86 hello.c
+2022-11-22  오후 01:05                 0 hello2.txt
+2022-11-25  오전 09:46    <DIR>          html5
+2022-11-24  오전 11:57                33 ms949.txt
+2022-11-22  오후 01:05                13 README.md
+2022-11-24  오후 03:41                10 test.txt
+2022-11-23  오후 12:40               412 txt.rtf
+2022-11-24  오전 11:58                41 ut8.txt
+2022-11-24  오전 11:58                52 uttf16.txt
+2022-11-22  오후 04:38                12 x.txt
+              15개 파일              79,733 바이트
+               5개 디렉터리  182,206,566,400 바이트 남음
+
+C:\Users\bitcamp\git\bitcamp-ncp>a.exe   <------- 실행
+Hello, world!   <---------성공
