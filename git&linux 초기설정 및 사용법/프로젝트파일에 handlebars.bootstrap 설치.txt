@@ -1,0 +1,23 @@
+C:\Users\bitcamp\git\bitcamp-ncp\myapp\app-server>cd src/main
+
+C:\Users\bitcamp\git\bitcamp-ncp\myapp\app-server\src\main>cd webapp
+
+C:\Users\bitcamp\git\bitcamp-ncp\myapp\app-server\src\main\webapp>npm install handlebars --save <<<== handlebars 설치
+
+added 6 packages, and audited 7 packages in 623ms
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\Users\bitcamp\git\bitcamp-ncp\myapp\app-server\src\main\webapp>npm install bootstrap --save <<<== bootstrap 설치
+
+added 2 packages, and audited 9 packages in 747ms
+
+3 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+C:\Users\bitcamp\git\bitcamp-ncp\myapp\app-server\src\main\webapp>
