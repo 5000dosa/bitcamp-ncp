@@ -11,20 +11,19 @@ public class star {
 
     int starLen = 1;
     while (starLen <= len) {
-      int spaceCnt =1;
-      int spaceLen = (len - starLen) /2;
+      int spaceCnt = 1;
+      int spaceLen = (len - starLen) / 2;
       while (spaceCnt <= spaceLen) {
         System.out.print(" ");
-        spaceCnt++;
+        spaceCnt ++;
       }
-
-      int starCnt =1;
+      int starCnt = 1;
       while (starCnt <= starLen) {
-        System.out.println("*");
+        System.out.print("*");
         starCnt++;
       }
       System.out.println();
-      starCnt += 2;
+      starLen += 2;
     }
   }
 }
